@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+<header>
+	<a href="{{ path('homepage') }}">
+		<img class="logo" src="{{ asset('img/logo.png') }}" alt=""/>
+	</a>
+</header>
+<nav>
+	<a>Main Page</a>
+	<a>Main Page</a>
+	<a>Main Page</a>
+	<a>Main Page</a>
+	<a>Main Page</a>
+</nav>
+
+<section>
+	CALENDAR
+</section>
+
+{{ render_esi(controller('App\\Controller\\MainController::offers')) }}
+{% endblock %}

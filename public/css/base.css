@@ -1,0 +1,71 @@
+body
+{
+	background: #999999;
+}
+
+
+:root {
+  --width:980px;
+}
+
+header
+{
+	width: var(--width);
+	margin: 0px auto;
+}
+
+.logo
+{
+	width: 110px;
+	height: 100px;
+	margin: 0px auto;
+	display: block;
+}
+
+nav
+{
+	width: var(--width);
+	margin: 0px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: blue;
+}
+nav > a
+{
+	border: solid 1px red;
+	margin: 0px 5px;
+	padding: 0px 50px;
+	height: 50px;
+	line-height: 50px;
+}
+nav > a:hover
+{
+	background: #888888;
+}
+
+section
+{
+	width: var(--width);
+	margin: 0px auto;
+}
+
+.offers
+{
+	width: var(--width);
+	margin: 0px auto;
+	display: flex;
+}
+.offers > div
+{
+	border: solid 1px yellow;
+	flex: 1 1 auto;
+	height: 250px;
+}
+
+footer
+{
+	width: var(--width);
+	margin: 0px auto;
+	border-top: solid 2px #000;
+}
