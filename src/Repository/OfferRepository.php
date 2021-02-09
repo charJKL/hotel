@@ -19,9 +19,10 @@ class OfferRepository extends ServiceEntityRepository
         parent::__construct($registry, Offer::class);
     }
 
-	public function SelectAllActive() : array
+	public function SelectAllActive(string $locale) : array
 	{
-		return $this->findBy(["active"=> true]);
+		
+		return $this->findBy(["active"=> true, "language" => $locale]);
 	}
     // /**
     //  * @return Offer[] Returns an array of Offer objects

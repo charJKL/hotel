@@ -10,9 +10,26 @@ body
 
 header
 {
+	position: relative;
 	width: var(--width);
 	margin: 0px auto;
 }
+.header-langauge-switch
+{
+	position: absolute;
+	top: 0px; right: 0px;
+	text-align: left;
+	display: flex;
+}
+.header-langauge-switch > a
+{
+	border: solid 1px black;
+	display: block;
+	margin: 0px 5px;
+	padding: 5px 10px;
+}
+.header-langauge-switch > a:last-child{ margin-right: 0px;}
+.header-langauge-switch > a:hover{ background: red; }
 
 .logo
 {

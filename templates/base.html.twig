@@ -13,6 +13,14 @@
 	<a href="{{ path('homepage') }}">
 		<img class="logo" src="{{ asset('img/logo.png') }}" alt=""/>
 	</a>
+	{% set route = app.request.get("_route") %}
+	{% set params = app.request.get("_route_params") %}
+	{# TODO this not work properly, because entire url will be different not only _locale #}
+	<div class="header-langauge-switch">
+		<a href="{{ path(route, params|merge({_locale: "es"})) }}">es</a>
+		<a href="{{ path(route, params|merge({_locale: "pl"})) }}">pl</a>
+		<a href="{{ path(route, params|merge({_locale: "en"})) }}">en</a>
+	</div>
 	</header>
 	{% endblock %}
 	

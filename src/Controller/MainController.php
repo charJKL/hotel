@@ -2,14 +2,18 @@
 namespace App\Controller;
 
 use App\Repository\OfferRepository;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @Route("{_locale}")
+ */
 class MainController extends AbstractController
 {
 	/**
-	 * @Route("/", name="homepage")
+	 * @Route("", name="homepage")
 	 */
 	public function homepage() : Response
 	{
@@ -27,10 +31,10 @@ class MainController extends AbstractController
 		return $this->render("offer.html.twig", ["offer" => $offer]);
 	}
 	
-	public function offers(OfferRepository $offerRepository) : Response
+	public function offers(Request $request, OfferRepository $offerRepository) : Response
 	{
 		// TODO set cache headers
-		$offers = $offerRepository->selectAllActive();
+		$offers = $offerRepository->selectAllActive($request->getLocale());
 		return $this->render("homepage/offers.fragment.html.twig", ["offers" => $offers]);
 	}
 }
