@@ -8,6 +8,26 @@
 	{% endblock %}
 </head>
 <body>
+	{% block header %}
+	<header>
+	<a href="{{ path('homepage') }}">
+		<img class="logo" src="{{ asset('img/logo.png') }}" alt=""/>
+	</a>
+	</header>
+	{% endblock %}
+	
+	
+	{% block nav %}
+	<nav>
+		<a>Main Page</a>
+		<a>Main Page</a>
+		<a>Main Page</a>
+		<a>Main Page</a>
+		<a>Main Page</a>
+	</nav>
+	{% endblock %}
+	
+	
 	{% block body %}{% endblock %}
 	<footer>
 		Footer
