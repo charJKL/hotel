@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Repository\OfferRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,21 @@ class MainController extends AbstractController
 		return $this->render("homepage.html.twig");
 	}
 	
-	public function offers() : Response
+	/**
+	 * @Route("/offer/{slug}", name="offer")
+	 */ 
+	public function offer($slug, OfferRepository $offerRepository) : Response
 	{
-		$offers = ["Frozen January", "Better Feburary", "Almost Sunny"]; // TODO query this from database
-		return $this->render("homepage/offers.fragment.html.twig", ["offers" => $offers]);
+		$offer = $offerRepository->findOneBySlug($slug);
+		if($offer == null) throw new NotFoundHttpException("Page doesn't exist"); // TODO change comment to "offer doesn't exist";
+		
+		return $this->render("offer.html.twig", ["offer" => $offer]);
 	}
 	
+	public function offers(OfferRepository $offerRepository) : Response
+	{
+		// TODO set cache headers
+		$offers = $offerRepository->selectAllActive();
+		return $this->render("homepage/offers.fragment.html.twig", ["offers" => $offers]);
+	}
 }
