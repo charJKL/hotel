@@ -91,13 +91,19 @@ nav > a:hover
 	padding: 0px;
 	margin: 1px 0px;
 }
+.calendar-contact
+{
+	flex: 0 1 200px;
+	margin: 1px 0px;
+}
 .calendar-submit
 {
 	flex: 0 1 150px;
 	height: 32px;
+	margin: 0px 0px 0px 10px;
 }
-.calendar-from,
-.calendar-to
+.calendar-start,
+.calendar-end
 {
 	flex: 1 1 0;
 	text-align: center;

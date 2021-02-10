@@ -1,12 +1,15 @@
 <?php
 namespace App\Controller;
 
-use App\Repository\OfferRepository;
-use stdClass;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Reservation;
+use App\Repository\OfferRepository;
+use stdClass;
+use DateTime;
 
 /**
  * @Route("{_locale}")
@@ -51,10 +54,20 @@ class MainController extends AbstractController
 	/**
 	 * @Route("/book", methods={"POST"}, name="book")
 	 */
-	public function book(Request $request)
+	public function book(Request $request, EntityManagerInterface $em)
 	{
-		// TODO process request, read about forms in symfony docs.
-		dump($request->request);
+		// TODO validate inputs, use symfony/forms
+		$reservation = new Reservation();
+			$reservation->setContact($request->request->get("contact"));
+			$reservation->setAmount($request->request->get("amount"));
+			$reservation->setRooms($request->request->get("rooms"));
+			$reservation->setStart(new DateTime($request->request->get("start")));
+			$reservation->setEnd(new DateTime($request->request->get("end")));
+			$reservation->setDate(new DateTime("now"));
+			
+		$em->persist($reservation);
+		$em->flush();
+		
 		return $this->redirectToRoute("homepage", [], 303);
 	}
 	

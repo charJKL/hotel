@@ -17,11 +17,12 @@
 			<option value="4">4 persons</option>
 			{# TODO what for 4 and more perons? #}
 		</select>
+		<input class="calendar-contact" type="text" name="contact" />
 		<input class="calendar-submit" type="submit" value="Book" />
 	</div>
 	<div class="calendar-dates">
-		<input class="calendar-from" type="date" name="from" />
-		<input class="calendar-to" type="date" name="to" />
+		<input class="calendar-start" type="date" name="start" />
+		<input class="calendar-end" type="date" name="end" />
 	</div>
 	<div class="calnedar-sheet">
 	{% for month in calendar %}
