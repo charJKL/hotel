@@ -2,7 +2,11 @@ body
 {
 	background: #999999;
 }
-
+h1, h2, h3
+{
+	margin: 0px;
+	padding: 0px;
+}
 
 :root {
   --width:980px;
@@ -61,6 +65,35 @@ nav > a:hover
 	background: #888888;
 }
 
+
+#calendar
+{
+	border: solid 1px red;
+	display: flex;
+}
+.calendar-month
+{
+	--widthe: calc(var(--width) / 2);
+	border: solid 1px blue;
+	flex: 1 1 0;
+}
+.calendar-name
+{
+	text-align: center;
+	border: solid 1px green;
+}
+.calendar-days
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+.calendar-day
+{
+	width: calc(var(--widthe) / 7);
+	height: 50px;
+	border: solid 1px gold;
+}
+
 section
 {
 	width: var(--width);
@@ -76,7 +109,7 @@ section
 .offers > div
 {
 	border: solid 1px yellow;
-	flex: 1 1 auto;
+	flex: 1 1 0;
 	height: 250px;
 }
 

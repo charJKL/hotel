@@ -1,8 +1,20 @@
 {% extends 'base.html.twig' %} 
 
 {% block body %}
-<section>
-	CALENDAR
+<section id="calendar">
+	
+	{% for month in calendar %}
+		<div class="calendar-month">
+			<h2 class="calendar-name">{{ month.name }}</h2>
+			<div class="calendar-days">
+			{% for day in month.days %}
+				<div class="calendar-day">
+					{{ day.number }}
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	{% endfor %}
 </section>
 
 {{ render_esi(controller('App\\Controller\\MainController::offers', {locale: app.request.locale})) }}

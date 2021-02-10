@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Repository\OfferRepository;
+use stdClass;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +18,22 @@ class MainController extends AbstractController
 	 */
 	public function homepage() : Response
 	{
-		return $this->render("homepage.html.twig");
+		// TODO remove all this logic from backend, move it to frontend
+		$calendar = [time(), strtotime("next month")]; // timestamp of current month and next month
+		foreach($calendar as $key => $timestamp) // the purpose of loop is to transform timestamps to stdClasses
+		{
+			$month = new stdClass;
+			$month->name = date("F", $timestamp); // TODO make it locale aware.
+			$month->count = date("t", $timestamp);
+			for($i = 1; $i <= $month->count; $i++)
+			{
+				$day = new stdClass();
+				$day->number = $i;
+				$month->days[] = $day;
+			} 
+			$calendar[$key] = $month;
+		}
+		return $this->render("homepage.html.twig", ["calendar" => $calendar]);
 	}
 	
 	/**
