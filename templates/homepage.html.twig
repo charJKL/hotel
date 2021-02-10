@@ -1,21 +1,45 @@
 {% extends 'base.html.twig' %} 
 
 {% block body %}
-<section id="calendar">
-	
+<form id="calendar" method="post" action="{{ path("book") }}">
+	<div class="calendar-inputs">
+		<select class="calendar-amount" name="amount">
+			<option value="1">1 person</option>
+			<option value="2">2 persons</option>
+			<option value="3">3 persons</option>
+			<option value="4">4 persons</option>
+			{# TODO what for 4 and more perons? #}
+		</select>
+		<select class="calendar-rooms" name="rooms">
+			<option value="1">1 room</option>
+			<option value="2">2 rooms</option>
+			<option value="3">3 rooms</option>
+			<option value="4">4 persons</option>
+			{# TODO what for 4 and more perons? #}
+		</select>
+		<input class="calendar-submit" type="submit" value="Book" />
+	</div>
+	<div class="calendar-dates">
+		<input class="calendar-from" type="date" name="from" />
+		<input class="calendar-to" type="date" name="to" />
+	</div>
+	<div class="calnedar-sheet">
 	{% for month in calendar %}
+		{# TODO what is someone want stay more than 1 month? #}
 		<div class="calendar-month">
 			<h2 class="calendar-name">{{ month.name }}</h2>
 			<div class="calendar-days">
 			{% for day in month.days %}
-				<div class="calendar-day">
-					{{ day.number }}
+				{% set class = (day.number == 1) ? "day-" ~ month.firstDay : "" %}
+				<div class="calendar-day {{ class }}">
+					<div>{{ day.number }}</div>
 				</div>
 			{% endfor %}
 			</div>
 		</div>
 	{% endfor %}
-</section>
+	</div>
+</form>
 
 {{ render_esi(controller('App\\Controller\\MainController::offers', {locale: app.request.locale})) }}
 {% endblock %}

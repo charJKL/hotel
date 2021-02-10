@@ -68,13 +68,49 @@ nav > a:hover
 
 #calendar
 {
-	border: solid 1px red;
+	width: var(--width);
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+}
+.calendar-inputs
+{
+	background: red;
+	display: flex;
+}
+.calendar-dates
+{
+	background: pink;
+	display: flex;
+}
+.calendar-amount,
+.calendar-rooms
+{
+	flex: 1 1 0;
+	height: 30px;
+	padding: 0px;
+	margin: 1px 0px;
+}
+.calendar-submit
+{
+	flex: 0 1 150px;
+	height: 32px;
+}
+.calendar-from,
+.calendar-to
+{
+	flex: 1 1 0;
+	text-align: center;
+	line-height: 30px;
+}
+.calnedar-sheet
+{
+	background: blue;
 	display: flex;
 }
 .calendar-month
 {
 	--widthe: calc(var(--width) / 2);
-	border: solid 1px blue;
 	flex: 1 1 0;
 }
 .calendar-name
@@ -89,10 +125,21 @@ nav > a:hover
 }
 .calendar-day
 {
-	width: calc(var(--widthe) / 7);
-	height: 50px;
-	border: solid 1px gold;
+	--width: calc(var(--widthe) / 7);
+	--height: 50px;
+	width: var(--width);
+	height: var(--height);
+	text-align: center;
+	border: solid 1px #000;
+	box-sizing: border-box;
 }
+.calendar-day.day-1{ margin-left: calc(var(--width) * 0); }
+.calendar-day.day-2{ margin-left: calc(var(--width) * 1); }
+.calendar-day.day-3{ margin-left: calc(var(--width) * 2); }
+.calendar-day.day-4{ margin-left: calc(var(--width) * 3); }
+.calendar-day.day-5{ margin-left: calc(var(--width) * 4); }
+.calendar-day.day-6{ margin-left: calc(var(--width) * 5); }
+.calendar-day.day-7{ margin-left: calc(var(--width) * 6); }
 
 section
 {

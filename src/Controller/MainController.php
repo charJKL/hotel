@@ -19,12 +19,13 @@ class MainController extends AbstractController
 	public function homepage() : Response
 	{
 		// TODO remove all this logic from backend, move it to frontend
-		$calendar = [time(), strtotime("next month")]; // timestamp of current month and next month
+		$calendar = [strtotime("first day of this month"), strtotime("first day of next month")];
 		foreach($calendar as $key => $timestamp) // the purpose of loop is to transform timestamps to stdClasses
 		{
 			$month = new stdClass;
 			$month->name = date("F", $timestamp); // TODO make it locale aware.
-			$month->count = date("t", $timestamp);
+			$month->count = (int) date("t", $timestamp);
+			$month->firstDay = date("N", $timestamp);
 			for($i = 1; $i <= $month->count; $i++)
 			{
 				$day = new stdClass();
@@ -45,6 +46,16 @@ class MainController extends AbstractController
 		if($offer == null) throw new NotFoundHttpException("Page doesn't exist"); // TODO change comment to "offer doesn't exist";
 		
 		return $this->render("offer.html.twig", ["offer" => $offer]);
+	}
+	
+	/**
+	 * @Route("/book", methods={"POST"}, name="book")
+	 */
+	public function book(Request $request)
+	{
+		// TODO process request, read about forms in symfony docs.
+		dump($request->request);
+		return $this->redirectToRoute("homepage", [], 303);
 	}
 	
 	public function offers(Request $request, OfferRepository $offerRepository) : Response
