@@ -19,6 +19,6 @@ class LobbyController extends AbstractController
 	public function lobby() : Response
 	{
 		$guest = $this->getUser();
-		return $this->render("lobby.html.twig", ["name" => $guest->getName()]);
+		return $this->render("view/lobby.html.twig", ["name" => $guest->getName()]);
 	}
 }

@@ -1,0 +1,39 @@
+form
+{
+	--form-font: "verdana";
+}
+label
+{
+	display: block;
+	margin: 2px 0px;
+}
+input 
+{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0px;
+	padding: 3px 5px;
+	border: solid 1px #000;
+	font: normal 16px / 16px var(--form-font);
+}
+input[type="checkbox"]
+{
+	background: red;
+	position: relative;
+	top: 2px;
+	width: 13px;
+	height: 13px;
+	margin: 0px 3px 0px 0px;
+}
+input[type="checkbox"] + span
+{
+	display: inline-block;
+	user-select: none;
+	cursor: pointer;
+	font: normal 12px / 16px var(--form-font);
+	padding: 0px 0px 2px 0px;
+}
+input[type="submit"]
+{
+	padding: 6px 5px;
+}

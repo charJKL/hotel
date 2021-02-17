@@ -4,42 +4,88 @@
 	<meta charset="utf-8" />
 	<title>{% block title %}Welcome!{% endblock %}</title>
 	{% block stylesheets %}
+		<link href="{{ asset("css/normalize.css") }}" rel="stylesheet"/>
+		<link href="{{ asset("css/form.css") }}" rel="stylesheet"/>
 		<link href="{{ asset("css/base.css") }}" rel="stylesheet"/>
 	{% endblock %}
 </head>
 <body>
-	{% block header %}
-	<header>
+{% block header %}
+<header>
 	<a href="{{ path('homepage') }}">
 		<img class="logo" src="{{ asset('img/logo.png') }}" alt=""/>
 	</a>
-	{% set route = app.request.get("_route") %}
-	{% set params = app.request.get("_route_params") %}
-	{# TODO this not work properly, because entire url will be different not only _locale #}
-	<div class="header-langauge-switch">
-		<a href="{{ path(route, params|merge({_locale: "es"})) }}">es</a>
-		<a href="{{ path(route, params|merge({_locale: "pl"})) }}">pl</a>
-		<a href="{{ path(route, params|merge({_locale: "en"})) }}">en</a>
+	<div class="language-switch">
+		{# TODO this not work properly, because entire url will be different not only _locale #}
+		{% set route = app.request.get("_route") %}
+		{% set params = app.request.get("_route_params") %}
+		{% set is_spanish_active = app.request.locale == "es" ? "switch-active" : "" %}
+		{% set is_polish_active = app.request.locale == "pl" ? "switch-active" : "" %}
+		{% set is_english_active = app.request.locale == "en" ? "switch-active" : "" %}
+		<div class="switch-row {{ is_spanish_active }}">
+			<a href="{{ path(route, params|merge({_locale: "es"})) }}">Español <span class="switch-flag flag-es"></span></a>
+		</div>
+		<div class="switch-row {{ is_polish_active }}">
+			<a href="{{ path(route, params|merge({_locale: "pl"})) }}">Polski <span class="switch-flag flag-pl"></span><a>
+		</div>
+		<div class="switch-row {{ is_english_active }}">
+			<a href="{{ path(route, params|merge({_locale: "en"})) }}">English <span class="switch-flag flag-en"></span></a>
+		</div>
 	</div>
-	</header>
+	{% block login_form %}
+		{% include("/fragment/login.html.twig") %}
 	{% endblock %}
-	
-	
-	{% block nav %}
-	<nav>
-		<a>Main Page</a>
-		<a>Main Page</a>
-		<a>Main Page</a>
-		<a>Main Page</a>
-		<a>Main Page</a>
-	</nav>
-	{% endblock %}
-	
-	
-	{% block body %}{% endblock %}
-	<footer>
-		Footer
-	</footer>
-	{% block javascripts %}{% endblock %}
+	{% set active = app.request.get("_route") %}
+</header>
+{% endblock %}
+
+{% block nav %}
+<nav>
+	{# TODO find a better way to do it, use some twig function? write own? #}
+	{% set is_room_active = app.request.get("_route") == "rooms" ? "active" : "" %}
+	{% set is_conferences_active = app.request.get("_route") == "conferences" ? "active" : "" %}
+	{% set is_recreation_active = app.request.get("_route") == "recreation" ? "active" : "" %}
+	{% set is_gallery_active = app.request.get("_route") == "gallery" ? "active" : "" %}
+	{% set is_contact_active = app.request.get("_route") == "contact" ? "active" : "" %}
+	<a class="nav-link {{ is_room_active }}" href="{{ path("rooms") }}">
+		<div class="nav-main">Pokoje</div>
+		<div class="nav-sub">standard &amp;  ceny</div>
+	</a>
+	<a class="nav-link {{ is_conferences_active }}" href="{{ path("conferences") }}">
+		<div class="nav-main">Konferencje</div>
+		<div class="nav-sub">infrastruktura &amp; dostępność</div>
+	</a>
+	<a class="nav-link {{ is_recreation_active }}" href="{{ path("recreation") }}">
+		<div class="nav-main">Rekreacja</div>
+		<div class="nav-sub">spa &amp; basen</div>
+	</a>
+	<a class="nav-link {{ is_gallery_active }}" href="{{ path("gallery") }}">
+		<div class="nav-main">Galeria</div>
+		<div class="nav-sub">wystrój &amp; klimat</div>
+	</a>
+	<a class="nav-link {{ is_contact_active }}" href="{{ path("contact") }}">
+		<div class="nav-main">Kontakt</div>
+		<div class="nav-sub">mapa &amp; telefon</div>
+	</a>
+</nav>
+{% endblock %}
+<main>
+{% block body %}
+
+{% endblock %}
+</main>
+<footer>
+	<section class="footer-left">
+		<span>Hotel NoName</span>
+		<span>© 2021</span>
+	</section>
+	<img class="footer-logo" src="{{ asset('img/logo_small.png') }}" alt=""/>
+	<section class="footer-right">
+		<span>ul. Ulica 23</span>
+		<span>00-000 Kraków, Polska</span>
+		<span>tel. +48 00 000 00 00</span>
+	</section>
+</footer>
+{% block javascripts %}{% endblock %}
 </body>
 </html>

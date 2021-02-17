@@ -19,6 +19,6 @@ class AdminController extends AbstractController
 	public function homepage() : Response
 	{
 		$guest = $this->getUser();
-		return $this->render("admin.html.twig", ["name" => $guest->getName()]);
+		return $this->render("view/admin.html.twig", ["name" => $guest->getName()]);
 	}
 }

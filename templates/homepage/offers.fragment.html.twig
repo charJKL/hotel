@@ -1,9 +1,0 @@
-<section class="offers">
-{% for offer in offers %}
-	<div>
-		<h1>{{ offer.title }}</h1>
-		<p>{{ offer.description }}</p>
-		<a href="{{ path('offer', {slug: offer.slug}) }}">Link to offer</a>
-	</div>
-{% endfor %}
-</section>

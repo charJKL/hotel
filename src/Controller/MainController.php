@@ -17,7 +17,47 @@ class MainController extends AbstractController
 	 */
 	public function homepage() : Response
 	{
-		return $this->render("homepage.html.twig");
+		return $this->render("view/homepage.html.twig");
+	}
+	
+	/**
+	 * @Route("/rooms", name="rooms");
+	 */ 
+	public function rooms() : Response
+	{
+		return $this->render("view/rooms.html.twig");
+	}
+	
+	/**
+	 * @Route("/recreation", name="recreation");
+	 */ 
+	public function recreation() : Response
+	{
+		return $this->render("view/recreation.html.twig");
+	}
+
+	/**
+	 * @Route("/conferences", name="conferences");
+	 */ 
+	public function conferences() : Response
+	{
+		return $this->render("view/conferences.html.twig");
+	}
+	
+	/**
+	 * @Route("/gallery", name="gallery");
+	 */ 
+	public function gallary() : Response
+	{
+		return $this->render("view/gallery.html.twig");
+	}
+	
+	/**
+	 * @Route("/contact", name="contact");
+	 */ 
+	public function contact() : Response
+	{
+		return $this->render("view/contact.html.twig");
 	}
 	
 	/**
@@ -28,13 +68,13 @@ class MainController extends AbstractController
 		$offer = $offerRepository->findOneBySlug($slug);
 		if($offer == null) throw new NotFoundHttpException("Page doesn't exist"); // TODO change comment to "offer doesn't exist";
 		
-		return $this->render("offer.html.twig", ["offer" => $offer]);
+		return $this->render("view/offer.html.twig", ["offer" => $offer]);
 	}
 	
 	public function offers(Request $request, OfferRepository $offerRepository) : Response
 	{
 		// TODO set cache headers
 		$offers = $offerRepository->selectAllActive($request->getLocale());
-		return $this->render("homepage/offers.fragment.html.twig", ["offers" => $offers]);
+		return $this->render("fragment/offers.html.twig", ["offers" => $offers]);
 	}
 }
