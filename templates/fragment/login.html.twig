@@ -9,7 +9,7 @@
 	<label><input type="password" name ="password" placeholder="Password" required /></label>
 	<label><input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" /></label>
 	
-	<label><input  type="submit" value="Zaloguj" /></label>
+	<label><input type="submit" value="Zaloguj" /></label>
 	<label><input type="checkbox" name="_remember_me"><span>Remember me</span></label>
 </form>
 {% endif %}
