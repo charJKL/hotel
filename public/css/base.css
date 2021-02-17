@@ -27,7 +27,6 @@ body
 	background: radial-gradient(ellipse at center, rgba(72, 184, 178, 1.0), rgba(78, 156, 226, 1.0));
 }
 
-
 header
 {
 	position: relative;
@@ -174,6 +173,7 @@ footer
 	margin: 0px auto;
 }
 
+
 .offer-body
 {
 	width: var(--width);
@@ -224,3 +224,84 @@ footer
 	background: url("/img/offer-id-2.png") no-repeat bottom center, linear-gradient(to bottom right, #F79171, #7062EB);
 }
 .offer-class-2:hover > h1{ color: rgba(255, 0, 250, 1);}
+
+#calendar
+{
+	width: var(--width);
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+}
+.calendar-inputs
+{
+	background: red;
+	display: flex;
+}
+.calendar-dates
+{
+	background: pink;
+	display: flex;
+}
+.calendar-amount,
+.calendar-rooms
+{
+	flex: 1 1 0;
+	height: 30px;
+	padding: 0px;
+	margin: 1px 0px;
+}
+.calendar-contact
+{
+	flex: 0 1 200px;
+	margin: 1px 0px;
+}
+.calendar-submit
+{
+	flex: 0 1 150px;
+	height: 32px;
+	margin: 0px 0px 0px 10px;
+}
+.calendar-start,
+.calendar-end
+{
+	flex: 1 1 0;
+	text-align: center;
+	line-height: 30px;
+}
+.calnedar-sheet
+{
+	background: blue;
+	display: flex;
+}
+.calendar-month
+{
+	--widthe: calc(var(--width) / 2);
+	flex: 1 1 0;
+}
+.calendar-name
+{
+	text-align: center;
+	border: solid 1px green;
+}
+.calendar-days
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+.calendar-day
+{
+	--width: calc(var(--widthe) / 7);
+	--height: 50px;
+	width: var(--width);
+	height: var(--height);
+	text-align: center;
+	border: solid 1px #000;
+	box-sizing: border-box;
+}
+.calendar-day.day-1{ margin-left: calc(var(--width) * 0); }
+.calendar-day.day-2{ margin-left: calc(var(--width) * 1); }
+.calendar-day.day-3{ margin-left: calc(var(--width) * 2); }
+.calendar-day.day-4{ margin-left: calc(var(--width) * 3); }
+.calendar-day.day-5{ margin-left: calc(var(--width) * 4); }
+.calendar-day.day-6{ margin-left: calc(var(--width) * 5); }
+.calendar-day.day-7{ margin-left: calc(var(--width) * 6); }
