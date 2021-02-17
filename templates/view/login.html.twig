@@ -16,13 +16,14 @@
 		<div>You are logged in as {{ app.user.username }}, <a href="{{ path('logout') }}">Logout</a></div>
 	{% endif %}
 		
-	<h1 class="sign-in-header">Sign in</h1>
+	<h1 class="sign-in-header">{{ "login.form.sign_in"|trans }}</h1>
 	<form class="sign-in-form" method="post">
-		<label><input type="text" name="name" placeholder="Name" required/></label>
-		<label><input type="password" name ="password" placeholder="Password" required /></label>
+		<label><input type="text" name="name" placeholder="{{ 'login.form.name'|trans }}" required/></label>
+		<label><input type="password" name ="password" placeholder="{{ 'login.form.password'|trans }}" required /></label>
 		<label><input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" /></label>
-
-		<label><input class="form-submit" type="submit" value="Zaloguj" /></label>
-		<label><input type="checkbox" name="_remember_me"><span>Remember me</span></label>
+		
+		<label><input type="submit" value="{{ 'login.form.continue'|trans }}" /></label>
+		<label><input type="checkbox" name="_remember_me"><span>{{ "login.form.remember_me"|trans}}</span></label>
 	</form>
 {% endblock %}
+

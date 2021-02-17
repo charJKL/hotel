@@ -48,24 +48,24 @@
 	{% set is_gallery_active = app.request.get("_route") == "gallery" ? "active" : "" %}
 	{% set is_contact_active = app.request.get("_route") == "contact" ? "active" : "" %}
 	<a class="nav-link {{ is_room_active }}" href="{{ path("rooms") }}">
-		<div class="nav-main">Pokoje</div>
-		<div class="nav-sub">standard &amp;  ceny</div>
+		<div class="nav-main">{{ "nav.rooms"|trans}}</div>
+		<div class="nav-sub">{{ "nav.standards"|trans }} &amp;  {{ "nav.prices"|trans}}</div>
 	</a>
 	<a class="nav-link {{ is_conferences_active }}" href="{{ path("conferences") }}">
-		<div class="nav-main">Konferencje</div>
-		<div class="nav-sub">infrastruktura &amp; dostępność</div>
+		<div class="nav-main">{{ "nav.conferences"|trans }}</div>
+		<div class="nav-sub">{{ "nav.infrastructure"|trans }} &amp; {{ "nav.availability"|trans }}</div>
 	</a>
 	<a class="nav-link {{ is_recreation_active }}" href="{{ path("recreation") }}">
-		<div class="nav-main">Rekreacja</div>
-		<div class="nav-sub">spa &amp; basen</div>
+		<div class="nav-main">{{ "nav.recreation"|trans }}</div>
+		<div class="nav-sub">{{ "nav.spa"|trans }} &amp; {{ "nav.pool"|trans }}</div>
 	</a>
 	<a class="nav-link {{ is_gallery_active }}" href="{{ path("gallery") }}">
-		<div class="nav-main">Galeria</div>
-		<div class="nav-sub">wystrój &amp; klimat</div>
+		<div class="nav-main">{{ "nav.gallery"|trans }}</div>
+		<div class="nav-sub">{{ "nav.interior"|trans }} &amp; {{ "nav.atmosphere"|trans }}</div>
 	</a>
 	<a class="nav-link {{ is_contact_active }}" href="{{ path("contact") }}">
-		<div class="nav-main">Kontakt</div>
-		<div class="nav-sub">mapa &amp; telefon</div>
+		<div class="nav-main">{{ "nav.contact"|trans }}</div>
+		<div class="nav-sub">{{ "nav.map"|trans }} &amp; {{ "nav.phone"|trans }}</div>
 	</a>
 </nav>
 {% endblock %}

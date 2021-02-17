@@ -2,7 +2,9 @@ controllers:
   resource: ../../src/Controller/
   type: annotation
   locale: en
-      
+  requirements:
+    _locale: "%locales%"
+        
 kernel:
   resource: ../../src/Kernel.php
   type: annotation

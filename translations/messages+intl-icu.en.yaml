@@ -1,0 +1,21 @@
+nav.rooms: Rooms
+nav.standards: standards
+nav.prices:  prices
+nav.conferences: Conferences
+nav.infrastructure: infrastructure
+nav.availability: availability
+nav.recreation: Recreation
+nav.spa: spa
+nav.pool: pool
+nav.gallery: Gallery
+nav.interior: interior
+nav.atmosphere: atmosphere
+nav.contact: Contact
+nav.map: map
+nav.phone: phone
+
+login.form.sign_in: Sign in
+login.form.name: Name / Room Id
+login.form.password: Password
+login.form.continue:  Continue
+login.form.remember_me: Remember me

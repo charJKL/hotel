@@ -1,0 +1,21 @@
+nav.rooms: Habitaciones
+nav.standards: normas
+nav.prices: precios
+nav.conferences: Conferencias
+nav.infrastructure: infraestructura
+nav.availability: disponibilidad
+nav.recreation: Recreación
+nav.spa: spa
+nav.pool: piscina
+nav.gallery: Galería
+nav.interior: interior
+nav.atmosphere: atmósfera
+nav.contact: Contacto
+nav.map: mapa
+nav.phone: teléfono
+
+login.form.sign_in: Registrarse
+login.form.name: Nombre / Habitación Id
+login.form.password: Contraseña
+login.form.continue:  Continuar
+login.form.remember_me: Recuérdame

@@ -1,0 +1,21 @@
+nav.rooms: "Pokoje"
+nav.standards: "standard"
+nav.prices:  "ceny"
+nav.conferences: Konferencje
+nav.infrastructure: infrastruktura
+nav.availability: dostępność
+nav.recreation: Rekreacja
+nav.spa: spa
+nav.pool: basen
+nav.gallery: Galeria
+nav.interior: wystrój
+nav.atmosphere: klimat
+nav.contact: Kontakt
+nav.map: mapa
+nav.phone: telefon
+
+login.form.sign_in: Zaloguj się
+login.form.name: Nazwa / Numer pokoju
+login.form.password: Hasło
+login.form.continue:  Kontynuuj
+login.form.remember_me: Zapamiętaj mnie
