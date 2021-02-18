@@ -2,26 +2,27 @@
 
 namespace App\Controller;
 
+use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+/**
+ * @Route("{_locale}")
+ */
 class SecurityController extends AbstractController
 {
 	/**
 	 * @Route("/login", name="login", priority=2)
 	 */
-	public function login(AuthenticationUtils $authenticationUtils): Response
+	public function login(Request $request, LoginFormAuthenticator $loginAuthenticator): Response
 	{
-		// if($this->getUser()) return $this->redirectToRoute('target_path');
-		
-		// get the login error if there is one
-		$error = $authenticationUtils->getLastAuthenticationError();
-		// last username entered by the user
-		$lastUsername = $authenticationUtils->getLastUsername();
-
-		return $this->render('view/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+		if($this->isGranted("ROLE_USER") == true)
+		{
+			return $loginAuthenticator->onAuthenticationSuccessRedirect($request, "main");
+		}
+		return $this->render('view/login.html.twig');
 	}
 
 	/**

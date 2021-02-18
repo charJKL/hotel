@@ -18,7 +18,9 @@ login.form.sign_in: Sign in
 login.form.name: Name / Room Id
 login.form.password: Password
 login.form.continue:  Continue
+login.form.logout:  Logout
 login.form.remember_me: Remember me
+
 
 calendar.reservation.saved: Reservation has been made. Our employee will confirm it by message or phone.
 calendar.reservation.error: There was error, please try again. If the error repeats, contact us by phone or message.

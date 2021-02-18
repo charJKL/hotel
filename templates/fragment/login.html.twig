@@ -1,7 +1,9 @@
 {% if is_granted("ROLE_USER") %}
-<div class="login-form">
-	<div>Helloe {{ app.user.name }}</div>
-	<a href="{{ path("logout") }}">Loguut</a>
+<div class="login-account">
+	<div class="login-account-name">{{ app.user.name }}</div>
+	<a class="login-account-logout" href="{{ path("logout") }}">
+		<input type="button" value="{{ 'login.form.logout'|trans }}"/>
+	</a>
 </div>
 {% else %}
 <form class="login-form" method="post" action="{{ path("login") }}">

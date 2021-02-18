@@ -18,6 +18,7 @@ login.form.sign_in: Registrarse
 login.form.name: Nombre / Habitación Id
 login.form.password: Contraseña
 login.form.continue:  Continuar
+login.form.logout:  Cerrar sesión 
 login.form.remember_me: Recuérdame
 
 calendar.reservation.saved: Se ha hecho la reserva. Nuestro empleado lo confirmará por mensaje o teléfono. 

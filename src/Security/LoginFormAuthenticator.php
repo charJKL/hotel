@@ -91,7 +91,12 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator implements Passw
 	}
 	
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
-	 {
+	{
+		return $this->onAuthenticationSuccessRedirect($request, $providerKey);
+	}
+	
+	public function onAuthenticationSuccessRedirect(Request $request, string $providerKey)
+	{
 		$SESSION_REDIRECT_FROM_KEY = "_security.$providerKey.target_path";
 		if($this->session->has($SESSION_REDIRECT_FROM_KEY) == true)
 		{
@@ -109,14 +114,15 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator implements Passw
 			return new RedirectResponse($url);
 		}
 		
-		$route = $request->attributes->get("_route");
+		$route = $request->attributes->get("homepage");
 		$url = $this->urlGenerator->generate($route);
+		dd($url);
 		return new RedirectResponse($url);
 	}
 	
 	public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
 	{
-		$this->session->set(Security::AUTHENTICATION_ERROR, $exception);
+		$this->session->getFlashBag()->add("security.error", $exception);
 		
 		$url = $this->urlGenerator->generate(self::ROUTE_LOGIN);
 		return new RedirectResponse($url);

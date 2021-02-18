@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block login_form %}
 <div class="login-form login-form-mock">
 	{# remove login form from header #}
@@ -8,14 +7,11 @@
 {% endblock %}
 
 {% block body %}
-	{% if error %}
-		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
-
-	{% if app.user %}
-		<div>You are logged in as {{ app.user.username }}, <a href="{{ path('logout') }}">Logout</a></div>
-	{% endif %}
-		
+	{% for result in app.flashes("security.error") %}
+		{% set css_class = "status-false" %}
+		<div class="sign-in-result {{ css_class }}"> {{ result.messageKey|trans(result.messageData, "security") }}</div>
+	{% endfor %}
+	
 	<h1 class="sign-in-header">{{ "login.form.sign_in"|trans }}</h1>
 	<form class="sign-in-form" method="post">
 		<label><input type="text" name="name" placeholder="{{ 'login.form.name'|trans }}" required/></label>

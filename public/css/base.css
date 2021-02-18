@@ -1,9 +1,10 @@
 :root {
-  --width:980px;
-  --font: "Arial";
-  --color-red: rgba(220, 30, 25, 1);
-  --color-gold: rgba(255, 200, 0, 1);
-  --color-green: rgba(0, 180, 0, 1);
+	--width:980px;
+	--font: "Arial";
+	--form-font: "verdana";
+	--color-red: rgba(220, 30, 25, 1);
+	--color-gold: rgba(255, 200, 0, 1);
+	--color-green: rgba(0, 180, 0, 1);
 }
 a
 {
@@ -103,14 +104,38 @@ footer
 .flag-pl{background: url('/img/flags/pl.svg') 50% 50% / contain no-repeat;}
 .flag-en{background: url('/img/flags/en.svg') 50% 50% / contain no-repeat;}
 .flag-es{background: url('/img/flags/es.svg') 50% 50% / contain no-repeat;}
+
+
+
 .login-form
 {
 	margin: 10px 20px 5px 0px;
 	width: 200px;
 	height: 120px;
 }
-
-
+.login-account
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 200px;
+	height: 120px;
+	margin: 10px 20px 5px 0px;
+	background: rgba(0, 0, 0, .1);
+	text-align: center;
+}
+.login-account-name
+{
+	flex: 1 0 content;
+	margin: 10px 0px 10px 0px;
+	font: bold 15px / 24px var(--form-font);
+}
+.login-account-logout
+{
+	flex: 0 0 content;
+	margin: 0px 5px 5px 5px;
+}
+	
 .nav-link
 {
 	height: 30px;
@@ -161,6 +186,19 @@ footer
 {
 	background: rgba(0, 0, 0, .1);
 }
+
+
+
+.sign-in-result
+{
+	width: 400px;
+	margin: 10px auto 10px auto;
+	padding: 0px 20px;
+	background: rgba(0, 0, 0, 1);
+	font: normal 16px / 40px var(--font);
+	text-align: center;
+}
+.sign-in-result.status-false{color: var(--color-red); }
 .sign-in-header
 {
 	text-align: center;

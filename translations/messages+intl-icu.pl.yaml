@@ -18,6 +18,7 @@ login.form.sign_in: Zaloguj się
 login.form.name: Nazwa / Numer pokoju
 login.form.password: Hasło
 login.form.continue:  Kontynuuj
+login.form.logout:  Wyloguj
 login.form.remember_me: Zapamiętaj mnie
 
 calendar.reservation.saved: Rezerwacja została złożona. Nasz pracownik potwierdzi ją wiadomością lub telefonem. 
