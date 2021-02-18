@@ -10,6 +10,8 @@ use App\Entity\Reservation;
 use App\Repository\OfferRepository;
 use stdClass;
 use DateTime;
+use Exception;
+use InvalidArgumentException;
 
 /**
  * @Route("{_locale}")
@@ -17,27 +19,22 @@ use DateTime;
 class MainController extends AbstractController
 {
 	/**
+	 * Helper function to set flash messages.
+	 */ 
+	private function setFlash(string $name, bool $status, string $message)
+	{
+		$obj = new stdClass();
+		$obj->status = ($status == true) ? "true" : "false";
+		$obj->message = $message;
+		$this->addFlash($name, $obj);
+	}
+	
+	/**
 	 * @Route("", name="homepage")
 	 */
 	public function homepage() : Response
 	{
-		// TODO remove all this logic from backend, move it to frontend
-		$calendar = [strtotime("first day of this month"), strtotime("first day of next month")];
-		foreach($calendar as $key => $timestamp) // the purpose of loop is to transform timestamps to stdClasses
-		{
-			$month = new stdClass;
-			$month->name = date("F", $timestamp); // TODO make it locale aware.
-			$month->count = (int) date("t", $timestamp);
-			$month->firstDay = date("N", $timestamp);
-			for($i = 1; $i <= $month->count; $i++)
-			{
-				$day = new stdClass();
-				$day->number = $i;
-				$month->days[] = $day;
-			} 
-			$calendar[$key] = $month;
-		}
-		return $this->render("view/homepage.html.twig", ["calendar" => $calendar]);
+		return $this->render("view/homepage.html.twig");
 	}
 	
 	/**
@@ -96,19 +93,41 @@ class MainController extends AbstractController
 	 */
 	public function book(Request $request, EntityManagerInterface $em)
 	{
-		// TODO validate inputs, use symfony/forms
-		$reservation = new Reservation();
-			$reservation->setContact($request->request->get("contact"));
-			$reservation->setAmount($request->request->get("amount"));
-			$reservation->setRooms($request->request->get("rooms"));
-			$reservation->setStart(new DateTime($request->request->get("start")));
-			$reservation->setEnd(new DateTime($request->request->get("end")));
-			$reservation->setDate(new DateTime("now"));
+		try
+		{
+			$contact = $request->request->get("contact");
+			$amount = $request->request->get("amount");
+			$rooms = $request->request->get("rooms");
+			$start = $request->request->get("start");
+			$end = $request->request->get("end");
 			
-		$em->persist($reservation);
-		$em->flush();
-		
-		return $this->redirectToRoute("homepage", [], 303);
+			// TODO validate inputs, use symfony/forms
+			if($contact == "") throw new InvalidArgumentException();
+			if($amount == "") throw new InvalidArgumentException();
+			if($rooms == "") throw new InvalidArgumentException();
+			if($start == "") throw new InvalidArgumentException();
+			if($end == "") throw new InvalidArgumentException();
+			
+			$reservation = new Reservation();
+				$reservation->setContact($request->request->get("contact"));
+				$reservation->setAmount($request->request->get("amount"));
+				$reservation->setRooms($request->request->get("rooms"));
+				$reservation->setStart(new DateTime($request->request->get("start")));
+				$reservation->setEnd(new DateTime($request->request->get("end")));
+				$reservation->setDate(new DateTime("now"));
+				
+			$em->persist($reservation);
+			$em->flush();
+			$this->setFlash("reservation.result", true, "calendar.reservation.saved");
+		}
+		catch(Exception $e) 
+		{
+			$this->setFlash("reservation.result", false, "calendar.reservation.error");
+		}
+		finally
+		{
+			return $this->redirectToRoute("homepage", [], 303);
+		}
 	}
 	
 	public function offers(Request $request, OfferRepository $offerRepository) : Response

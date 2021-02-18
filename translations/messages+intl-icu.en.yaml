@@ -19,3 +19,22 @@ login.form.name: Name / Room Id
 login.form.password: Password
 login.form.continue:  Continue
 login.form.remember_me: Remember me
+
+calendar.reservation.saved: Reservation has been made. Our employee will confirm it by message or phone.
+calendar.reservation.error: There was error, please try again. If the error repeats, contact us by phone or message.
+calendar.amount?: Persons amount:
+calendar.amount: >- 
+  {persons, plural, 
+    =1 {# person}
+    other {# persons}
+  }
+calendar.rooms?: Required rooms:
+calendar.rooms:  >-
+  {rooms, plural, 
+    =1 {# room}
+    other {# rooms}
+  }
+calendar.contact: Phone or email:
+calendar.booking: Book
+calednar.checkin.date?: I will check in:
+calendar.stay.until?: I will stay until:

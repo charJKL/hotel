@@ -19,3 +19,22 @@ login.form.name: Nombre / Habitación Id
 login.form.password: Contraseña
 login.form.continue:  Continuar
 login.form.remember_me: Recuérdame
+
+calendar.reservation.saved: Se ha hecho la reserva. Nuestro empleado lo confirmará por mensaje o teléfono. 
+calendar.reservation.error: Hubo un error, inténtelo de nuevo. Si el error se repite, contáctenos por teléfono o mensaje. 
+calendar.amount?: Cantidad de personas:
+calendar.amount: >- 
+  {persons, plural, 
+    =1 {# persona}
+    other {# personas}
+  }
+calendar.rooms?: Habitaciones requeridas:
+calendar.rooms:  >-
+  {rooms, plural, 
+    =1 {# habitación}
+    other {# habitaciones}
+  }
+calendar.contact: Teléfono o email:
+calendar.booking: Reserva 
+calednar.checkin.date?: Voy a registrarme:
+calendar.stay.until?: Me quedaré hasta:
