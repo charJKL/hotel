@@ -1,12 +1,12 @@
 {% if is_granted("ROLE_USER") %}
-<div class="login-account">
-	<div class="login-account-name">{{ app.user.name }}</div>
-	<a class="login-account-logout" href="{{ path("logout") }}">
+<div class="header-login-account">
+	<div class="header-login-account-name">{{ app.user.name }}</div>
+	<a class="header-login-account-logout" href="{{ path("logout") }}">
 		<input type="button" value="{{ 'login.form.logout'|trans }}"/>
 	</a>
 </div>
 {% else %}
-<form class="login-form" method="post" action="{{ path("login") }}">
+<form class="header-login-form" method="post" action="{{ path("login") }}">
 	<label><input type="text" name="name" placeholder="{{ 'login.form.name'|trans }}" required/></label>
 	<label><input type="password" name ="password" placeholder="{{ 'login.form.password'|trans }}" required /></label>
 	<label><input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" /></label>

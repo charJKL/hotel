@@ -118,11 +118,11 @@ class MainController extends AbstractController
 				
 			$em->persist($reservation);
 			$em->flush();
-			$this->setFlash("reservation.result", true, "calendar.reservation.saved");
+			$this->setFlash("reservation.result", true, "reservation.reservation.saved");
 		}
 		catch(Exception $e) 
 		{
-			$this->setFlash("reservation.result", false, "calendar.reservation.error");
+			$this->setFlash("reservation.result", false, "reservation.reservation.error");
 		}
 		finally
 		{

@@ -1,12 +1,14 @@
-<section class="offers">
+<section class="offers-list">
 {% for offer in offers %}
-	{# css class should be managed dynamiclly #}
-	{# what if description become to long to overlay image? #}
-	{# add slider to manage too many offer in one row #}
-	{% set css_class = "offer-class-" ~ offer.offerId %}
-	<a href="{{ path('offer', {slug: offer.slug}) }}" class="offer {{css_class}}">
-		<h1 class="offer-header">{{ offer.title }}</h1>
-		<p class="offer-desc">{{ offer.description|slice(0, 300) ~ '...' }}</p>
+	{# css class should be managed dynamically #}
+	{# what if description become to long and overlay image? #}
+	{# add slider to manage too many offer in one row, do we want slider? #}
+	{% set css_class = "offers-css-" ~ offer.offerId %}
+	{% set offer_image = "/img/offer/offer-id-" ~ offer.offerId ~ ".png" %}
+	<a class="offers-list-one {{css_class}}" href="{{ path('offer', {slug: offer.slug}) }}" >
+		<h1 class="offers-list-header">{{ offer.title }}</h1>
+		<p class="offers-list-desc">{{ offer.description|slice(0, 300) ~ '...' }}</p>
+		<img class="offers-list-image" src="{{ asset(offer_image) }}" />
 	</a>
 {% endfor %}
 </section>

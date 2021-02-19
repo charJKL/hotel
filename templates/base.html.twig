@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>	<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8" />
 	<title>{% block title %}Welcome!{% endblock %}</title>
 	{% block stylesheets %}
@@ -10,37 +11,36 @@
 	{% endblock %}
 </head>
 <body>
+<header class="header">
 {% block header %}
-<header>
-	<a href="{{ path('homepage') }}">
-		<img class="logo" src="{{ asset('img/logo.png') }}" alt=""/>
+	<a class="header-logo" href="{{ path('homepage') }}">
+		<img class="header-img" src="{{ asset('img/logo.png') }}" alt=""/>
 	</a>
-	<div class="language-switch">
+	<div class="header-switch">
 		{# TODO this not work properly, because entire url will be different not only _locale #}
 		{% set route = app.request.get("_route") %}
 		{% set params = app.request.get("_route_params") %}
-		{% set is_spanish_active = app.request.locale == "es" ? "switch-active" : "" %}
-		{% set is_polish_active = app.request.locale == "pl" ? "switch-active" : "" %}
-		{% set is_english_active = app.request.locale == "en" ? "switch-active" : "" %}
-		<div class="switch-row {{ is_spanish_active }}">
-			<a href="{{ path(route, params|merge({_locale: "es"})) }}">Español <span class="switch-flag flag-es"></span></a>
+		{% set is_spanish_active = app.request.locale == "es" ? "active" : "" %}
+		{% set is_polish_active = app.request.locale == "pl" ? "active" : "" %}
+		{% set is_english_active = app.request.locale == "en" ? "active" : "" %}
+		<div class="header-switch-row {{ is_spanish_active }}">
+			<a href="{{ path(route, params|merge({_locale: "es"})) }}">Español <span class="header-switch-flag flag flag-es"></span></a>
 		</div>
-		<div class="switch-row {{ is_polish_active }}">
-			<a href="{{ path(route, params|merge({_locale: "pl"})) }}">Polski <span class="switch-flag flag-pl"></span><a>
+		<div class="header-switch-row {{ is_polish_active }}">
+			<a href="{{ path(route, params|merge({_locale: "pl"})) }}">Polski <span class="header-switch-flag flag flag-pl"></span><a>
 		</div>
-		<div class="switch-row {{ is_english_active }}">
-			<a href="{{ path(route, params|merge({_locale: "en"})) }}">English <span class="switch-flag flag-en"></span></a>
+		<div class="header-switch-row {{ is_english_active }}">
+			<a href="{{ path(route, params|merge({_locale: "en"})) }}">English <span class="header-switch-flag flag flag-en"></span></a>
 		</div>
 	</div>
 	{% block login_form %}
 		{% include("/fragment/login.html.twig") %}
 	{% endblock %}
-	{% set active = app.request.get("_route") %}
-</header>
 {% endblock %}
+</header>
 
+<nav class="nav">
 {% block nav %}
-<nav>
 	{# TODO find a better way to do it, use some twig function? write own? #}
 	{% set is_room_active = app.request.get("_route") == "rooms" ? "active" : "" %}
 	{% set is_conferences_active = app.request.get("_route") == "conferences" ? "active" : "" %}
@@ -67,25 +67,26 @@
 		<div class="nav-main">{{ "nav.contact"|trans }}</div>
 		<div class="nav-sub">{{ "nav.map"|trans }} &amp; {{ "nav.phone"|trans }}</div>
 	</a>
+{% endblock %}
 </nav>
-{% endblock %}
-<main>
-{% block body %}
 
-{% endblock %}
+<main class="main">
+	{% block body %} {% endblock %}
 </main>
-<footer>
+
+<footer class="footer">
 	<section class="footer-left">
-		<span>Hotel NoName</span>
-		<span>© 2021</span>
+		<div>Hotel NoName</div>
+		<div>© 2021</div>
 	</section>
 	<img class="footer-logo" src="{{ asset('img/logo_small.png') }}" alt=""/>
 	<section class="footer-right">
-		<span>ul. Ulica 23</span>
-		<span>00-000 Kraków, Polska</span>
-		<span>tel. +48 00 000 00 00</span>
+		<div>ul. Ulica 23</div>
+		<div>00-000 Kraków, Polska</div>
+		<div>tel. +48 00 000 00 00</div>
 	</section>
 </footer>
 {% block javascripts %}{% endblock %}
+
 </body>
 </html>

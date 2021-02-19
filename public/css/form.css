@@ -1,26 +1,27 @@
-
 label
 {
 	display: block;
 	margin: 2px 0px;
 }
-input 
+input,
+select
 {
 	box-sizing: border-box;
 	width: 100%;
-	margin: 0px;
 	padding: 3px 5px;
+	margin: 0px;
+	background: rgba(255, 255, 255, 1);
 	border: solid 1px #000;
 	font: normal 16px / 16px var(--form-font);
 }
-input:user-invalid
+input:user-invalid,
+select:user-invalid
 {
 	border: solid 1px rgba(255, 0, 0);
 	box-shadow: none;
 }
 input[type="checkbox"]
 {
-	background: red;
 	position: relative;
 	top: 2px;
 	width: 13px;
@@ -30,14 +31,15 @@ input[type="checkbox"]
 input[type="checkbox"] + span
 {
 	display: inline-block;
-	user-select: none;
-	cursor: pointer;
-	font: normal 12px / 16px var(--form-font);
 	padding: 0px 0px 2px 0px;
+	font: normal 12px / 16px var(--form-font);
+	cursor: pointer;
+	user-select: none;
 }
 input[type="submit"],
 input[type="button"]
 {
 	padding: 6px 5px;
+	background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
 	cursor: pointer;
 }

@@ -1,0 +1,121 @@
+.reservation-form
+{
+	display: flex;
+	flex-flow: column nowrap;
+	margin: 10px 10px 0px 10px;
+}
+.reservation-result
+{
+	margin: 0px 0px 10px 0px;
+	background: rgba(0, 0, 0, 1);
+	font: normal 16px / 40px var(--font);
+	text-align: center;
+}
+.reservation-result.status-true{color: var(--color-green) }
+.reservation-result.status-false{color: var(--color-red); }
+@media (min-width: 992px){ .reservation-form{ width: calc(var(--width) - 20px); margin: 10px auto 0px auto; } }
+.reservation-row
+{
+	display: flex;
+	flex-flow: column nowrap;
+}
+@media (min-width: 576px){ .reservation-row{ flex-flow: row nowrap;} }
+@media (min-width: 576px){ .reservation-row-dates{ order: 1;} }
+@media (min-width: 576px){ .reservation-row-info{ order: 0;} }
+@media (min-width: 576px){ .reservation-row-sheet{ order: 2;} }
+.reservation-input
+{
+	position: relative;
+}
+@media (min-width: 576px){ .reservation-input{ flex: 1 0 0; } }
+.reservation-label
+{
+	display: block;
+	position: absolute;
+	top: 3px; left: 5px;
+	font: normal 11px / 11px var(--form-font);
+	white-space: nowrap;
+	overflow: hidden;
+}
+.reservation-amount,
+.reservation-rooms
+{
+	padding: 20px 0px 5px 10px;
+	height: 50px;
+}
+.reservation-contact
+{
+	padding: 20px 0px 5px 10px;
+	height: 50px;
+}
+@media (min-width: 576px){ .reservation-input-contact{ flex: 0 0 200px;} }
+input.reservation-submit
+{
+	padding: 10px 0px 10px 0px;
+	height: 50px;
+}
+@media (min-width: 576px){ .reservation-input-submit{ flex: 0 0 150px;} }
+.reservation-start,
+.reservation-end
+{
+	padding: 20px 0px 5px 10px;
+	height: 50px;
+}
+@media (min-width: 576px){ .reservation-start, .reservation-end{ text-align: center; } }
+
+
+
+
+.offers-list
+{
+	display: flex;
+	flex-flow: column nowrap;
+	margin: 10px 10px;
+}
+@media (min-width: 576px){ .offers-list{ flex-flow: row wrap; justify-content: center; margin: 10px 0px; } }
+.offers-list-one
+{
+	display: flex;
+	flex-flow: column nowrap;
+	flex: 0 0 auto;
+	margin: 10px 0px 0px 0px;
+	border: solid 10px rgba(0, 0, 0, 1);
+	color: rgba(240, 240, 240, 1);
+	cursor: pointer;
+	transition: filter ease-in-out 0.1s;
+}
+@media (min-width: 576px){ .offers-list-one{ width: 270px; margin: 5px 5px 5px 5px; } }
+@media (min-width: 768px){ .offers-list-one{ min-height: 360px; } }
+
+.offers-css-1{background: linear-gradient(to top right, #3F0D66, #2817E9);}
+.offers-css-2{background: linear-gradient(to bottom right, #F79171, #7062EB);}
+.offers-css-3{background: linear-gradient(to top left, #3F9941, #B9B63E);}
+
+/*
+.offers-css-1{background: url("/img/offer-id-1.png") no-repeat bottom center, linear-gradient(to top right, #1f0633, #0c0645);}
+.offers-css-1:hover{background: url("/img/offer-id-1.png") no-repeat bottom center, linear-gradient(to top right, #3F0D66, #2817E9);}
+.offers-css-1:hover > h1{ color: rgba(255, 250, 0, 1);}
+.offers-css-2{background: url("/img/offer-id-2.png") no-repeat bottom center, linear-gradient(to bottom right, #623a2d, #2c275e);}
+.offers-css-2:hover{background: url("/img/offer-id-2.png") no-repeat bottom center, linear-gradient(to bottom right, #F79171, #7062EB);}
+.offers-css-2:hover > h1{ color: rgba(255, 0, 250, 1);}
+*/
+
+.offers-list-header
+{
+	flex: 0 0 auto;
+	font: bold small-caps 30px / 20px var(--font);
+	text-align: center;
+}
+.offers-list-desc
+{
+	flex: 1 1 0;
+	margin: 0px 20px;
+	text-align: justify;
+}
+.offers-list-img
+{
+	flex: 0 0 auto;
+	
+	overflow: hidden;
+	text-align: center;
+}

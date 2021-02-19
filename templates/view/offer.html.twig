@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %} 
 
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset("css/offer.css") }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block body %}
 <div class="offer-body">
 	<h1>{{ offer.title }}</h1>

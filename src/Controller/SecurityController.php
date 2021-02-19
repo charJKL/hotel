@@ -18,10 +18,12 @@ class SecurityController extends AbstractController
 	 */
 	public function login(Request $request, LoginFormAuthenticator $loginAuthenticator): Response
 	{
+		
 		if($this->isGranted("ROLE_USER") == true)
 		{
 			return $loginAuthenticator->onAuthenticationSuccessRedirect($request, "main");
 		}
+		
 		return $this->render('view/login.html.twig');
 	}
 

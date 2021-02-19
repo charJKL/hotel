@@ -1,0 +1,5 @@
+.offer-body
+{
+	margin: 5px 10px;
+}
+@media (min-width: 992px){ .offer-body{ width: var(--width); margin: 0px auto;} }

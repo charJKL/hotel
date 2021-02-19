@@ -21,21 +21,21 @@ login.form.continue:  Kontynuuj
 login.form.logout:  Wyloguj
 login.form.remember_me: Zapamiętaj mnie
 
-calendar.reservation.saved: Rezerwacja została złożona. Nasz pracownik potwierdzi ją wiadomością lub telefonem. 
-calendar.reservation.error: Wystąpił problem, spróbuj ponownie. Jeśli błąd się powtórzy, skontaktuj się telefonicznie lub mailowo.
-calendar.amount?: Liczba osób:
-calendar.amount: >- 
+reservation.reservation.saved: Rezerwacja została złożona. Nasz pracownik potwierdzi ją wiadomością lub telefonem. 
+reservation.reservation.error: Wystąpił problem, spróbuj ponownie. Jeśli błąd się powtórzy, skontaktuj się telefonicznie lub mailowo.
+reservation.amount?: Liczba osób:
+reservation.amount: >- 
   {persons, plural, 
     =1 {# osoba}
     other {# osoby}
   }
-calendar.rooms?: Liczba pokoi:
-calendar.rooms:  >-
+reservation.rooms?: Liczba pokoi:
+reservation.rooms:  >-
   {rooms, plural, 
     =1 {# pokój}
     other {# pokoje}
   }
-calendar.contact: Telefon lub email:
-calendar.booking: Rezerwuj
-calednar.checkin.date?: Zamelduje się dnia:
-calendar.stay.until?: Zatrzymam się do:
+reservation.contact: Telefon lub email:
+reservation.booking: Rezerwuj
+reservation.checkin.date?: Zamelduje się dnia:
+reservation.stay.until?: Zatrzymam się do:

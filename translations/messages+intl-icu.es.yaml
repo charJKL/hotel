@@ -21,21 +21,21 @@ login.form.continue:  Continuar
 login.form.logout:  Cerrar sesión 
 login.form.remember_me: Recuérdame
 
-calendar.reservation.saved: Se ha hecho la reserva. Nuestro empleado lo confirmará por mensaje o teléfono. 
-calendar.reservation.error: Hubo un error, inténtelo de nuevo. Si el error se repite, contáctenos por teléfono o mensaje. 
-calendar.amount?: Cantidad de personas:
-calendar.amount: >- 
+reservation.reservation.saved: Se ha hecho la reserva. Nuestro empleado lo confirmará por mensaje o teléfono. 
+reservation.reservation.error: Hubo un error, inténtelo de nuevo. Si el error se repite, contáctenos por teléfono o mensaje. 
+reservation.amount?: Cantidad de personas:
+reservation.amount: >- 
   {persons, plural, 
     =1 {# persona}
     other {# personas}
   }
-calendar.rooms?: Habitaciones requeridas:
-calendar.rooms:  >-
+reservation.rooms?: Habitaciones requeridas:
+reservation.rooms:  >-
   {rooms, plural, 
     =1 {# habitación}
     other {# habitaciones}
   }
-calendar.contact: Teléfono o email:
-calendar.booking: Reserva 
-calednar.checkin.date?: Voy a registrarme:
-calendar.stay.until?: Me quedaré hasta:
+reservation.contact: Teléfono o email:
+reservation.booking: Reserva 
+reservation.checkin.date?: Voy a registrarme:
+reservation.stay.until?: Me quedaré hasta:
