@@ -114,9 +114,7 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator implements Passw
 			return new RedirectResponse($url);
 		}
 		
-		$route = $request->attributes->get("homepage");
-		$url = $this->urlGenerator->generate($route);
-		dd($url);
+		$url = $this->urlGenerator->generate("homepage");
 		return new RedirectResponse($url);
 	}
 	
