@@ -110,7 +110,7 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator implements Passw
 		}
 		if($this->security->isGranted("ROLE_EMPLOYEE") == true)
 		{
-			$url = $this->urlGenerator->generate("office");
+			$url = $this->urlGenerator->generate("admin");
 			return new RedirectResponse($url);
 		}
 		

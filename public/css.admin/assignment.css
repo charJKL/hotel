@@ -1,0 +1,36 @@
+
+.reservation-one
+{
+	background: rgba(0, 0, 0, .5);
+	border: solid 1px red;
+	max-height: 100%;
+	overflow: hidden;
+}
+
+
+
+.assignment
+{
+	display: flex;
+	flex-flow: row nowrap;
+	overflow: hidden;
+}
+.assignment-rooms
+{
+	display: block;
+	flex: 0 0 150px;
+	overflow: hidden;
+}
+.assignment-room-one
+{
+	border-bottom: solid 1px #000;
+	font: normal 16px / 50px var(--font);
+	text-align: center;
+}
+.assignment-room-one:last-child{ margin: 0px 0px 0px 0px; }
+
+.assignment-timeline
+{
+	flex: 1 0 0;
+	background: pink;
+}

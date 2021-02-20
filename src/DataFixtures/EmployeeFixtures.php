@@ -22,7 +22,21 @@ class EmployeeFixtures extends Fixture
 		$employee = new Employee();
 			$password = $this->passwordEncoder->encodePassword($employee, "password");
 			$employee->setName("admin@gmail.com");
-			$employee->setRoles(["ROLE_MANAGER"]);
+			$employee->setRoles(["ROLE_MANAGER","ROLE_EMPLOYEE"]);
+			$employee->setPassword($password);
+			$manager->persist($employee);
+		
+		$employee = new Employee();
+			$password = $this->passwordEncoder->encodePassword($employee, "password");
+			$employee->setName("maciek@gmail.com");
+			$employee->setRoles(["ROLE_EMPLOYEE"]);
+			$employee->setPassword($password);
+			$manager->persist($employee);
+			
+		$employee = new Employee();
+			$password = $this->passwordEncoder->encodePassword($employee, "password");
+			$employee->setName("monika@gmail.com");
+			$employee->setRoles(["ROLE_EMPLOYEE"]);
 			$employee->setPassword($password);
 			$manager->persist($employee);
 		

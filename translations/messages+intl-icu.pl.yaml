@@ -39,3 +39,7 @@ reservation.contact: Telefon lub email:
 reservation.booking: Rezerwuj
 reservation.checkin.date?: Zamelduje się dnia:
 reservation.stay.until?: Zatrzymam się do:
+
+admin.nav.assignment: Przydział
+admin.nav.rooms: Pokoje
+admin.nav.reservation: Rezerwacje

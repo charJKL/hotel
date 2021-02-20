@@ -1,0 +1,17 @@
+{% extends "admin.html.twig" %} 
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset("/css.admin/assignment.css") }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+<section class="assignment">
+	ASSIGMNET
+</section>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset("/js.admin/assignment.js") }}"></script>
+{% endblock %}

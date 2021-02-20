@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" />
+	<title>{% block title %}Office{% endblock %}</title>
+	{% block stylesheets %}
+		<link href="{{ asset("css.admin/normalize.css") }}" rel="stylesheet"/>
+		<link href="{{ asset("css.admin/form.css") }}" rel="stylesheet"/>
+		<link href="{{ asset("css.admin/admin.css") }}" rel="stylesheet"/>
+	{% endblock %}
+</head>
+<body>
+<header class="header">
+	<div class="header-logo">
+		<img src="{{ asset("img/logo_small.png") }}"/>
+	</div>
+	<div class="header-account">
+		<div class="header-account-name">{{ app.user.name }}</div>
+		<a href="{{ path("logout") }}" class="header-account-link">{{ "logout"|trans }}</a>
+	</div>
+</header>
+<nav class="nav">
+	{# TODO find a better way to do it, use some twig function? write own? #}
+	{% set is_assignment_active = app.request.get("_route") == "admin/assignment" ? "active" : "" %}
+	{% set is_rooms_active = app.request.get("_route") == "admin/rooms" ? "active" : "" %}
+	{% set is_reservation_active = app.request.get("_route") == "admin/reservation" ? "active" : "" %}
+	<a href="{{ path('admin/assignment') }}" class="nav-link {{ is_assignment_active }}">{{ "admin.nav.assignment"|trans }}</a>
+	<a href="{{ path('admin/rooms') }}" class="nav-link {{ is_rooms_active }}">{{ "admin.nav.rooms"|trans }}</a>
+	<a href="{{ path('admin/reservation') }}" class="nav-link {{ is_reservation_active }}">{{ "admin.nav.reservation"|trans }}</a>
+</nav>
+
+<main class="main">
+	{% block body %} {% endblock %}
+</main>
+
+<footer class="footer">
+	
+</footer>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>
