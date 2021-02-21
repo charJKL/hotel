@@ -23,9 +23,9 @@ class Room
     private $number;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array")
      */
-    private $type;
+    private $features = [];
 
     public function getId(): ?int
     {
@@ -44,14 +44,14 @@ class Room
         return $this;
     }
 
-    public function getType(): ?string
+    public function getFeatures(): ?array
     {
-        return $this->type;
+        return $this->features;
     }
 
-    public function setType(?string $type): self
+    public function setFeatures(array $features): self
     {
-        $this->type = $type;
+        $this->features = $features;
 
         return $this;
     }
