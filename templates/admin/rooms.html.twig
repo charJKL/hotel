@@ -1,12 +1,17 @@
-{% extends "admin.html.twig" %} 
+{% extends "panel.html.twig" %} 
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset("/css.admin/rooms.css") }}" rel="stylesheet"/>
+	{{ encore_entry_link_tags("admin.rooms") }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags("admin.rooms") }}
 {% endblock %}
 
 {% block body %}
-<section class="assignment">
+<section class="rooms">
 	ROOMS
 </section>
 {% endblock %}

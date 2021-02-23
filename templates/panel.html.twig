@@ -5,15 +5,16 @@
 	<meta charset="utf-8" />
 	<title>{% block title %}Office{% endblock %}</title>
 	{% block stylesheets %}
-		<link href="{{ asset("css.admin/normalize.css") }}" rel="stylesheet"/>
-		<link href="{{ asset("css.admin/form.css") }}" rel="stylesheet"/>
-		<link href="{{ asset("css.admin/admin.css") }}" rel="stylesheet"/>
+		{{ encore_entry_link_tags("admin.panel") }}
+	{% endblock %}
+	{% block javascripts %}
+		{{ encore_entry_script_tags("admin.panel") }}
 	{% endblock %}
 </head>
 <body>
 <header class="header">
 	<div class="header-logo">
-		<img src="{{ asset("img/logo_small.png") }}"/>
+		<img src="{{ asset("build/images/logo_small.png") }}"/>
 	</div>
 	<div class="header-account">
 		<div class="header-account-name">{{ app.user.name }}</div>
@@ -37,7 +38,5 @@
 <footer class="footer">
 	
 </footer>
-
-{% block javascripts %}{% endblock %}
 </body>
 </html>

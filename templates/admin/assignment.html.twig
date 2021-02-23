@@ -1,8 +1,13 @@
-{% extends "admin.html.twig" %} 
+{% extends "panel.html.twig" %} 
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset("/css.admin/assignment.css") }}" rel="stylesheet"/>
+	{{ encore_entry_link_tags("admin.assignment") }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags("admin.assignment") }}
 {% endblock %}
 
 {% block body %}
@@ -11,7 +16,4 @@
 </section>
 {% endblock %}
 
-{% block javascripts %}
-	{{ parent() }}
-	<script src="{{ asset("/js.admin/assignment.js") }}"></script>
-{% endblock %}
+

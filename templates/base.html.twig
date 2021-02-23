@@ -5,16 +5,17 @@
 	<meta charset="utf-8" />
 	<title>{% block title %}Welcome!{% endblock %}</title>
 	{% block stylesheets %}
-		<link href="{{ asset("css/normalize.css") }}" rel="stylesheet"/>
-		<link href="{{ asset("css/form.css") }}" rel="stylesheet"/>
-		<link href="{{ asset("css/base.css") }}" rel="stylesheet"/>
+		{{ encore_entry_link_tags("base") }}
+	{% endblock %}
+	{% block javascripts %}
+		{{ encore_entry_script_tags("base") }}
 	{% endblock %}
 </head>
 <body>
 <header class="header">
 {% block header %}
 	<a class="header-logo" href="{{ path('homepage') }}">
-		<img class="header-img" src="{{ asset('img/logo.png') }}" alt=""/>
+		<img class="header-img" src="{{ asset('build/images/logo.png') }}" alt=""/>
 	</a>
 	<div class="header-switch">
 		{# TODO this not work properly, because entire url will be different not only _locale #}
@@ -27,7 +28,7 @@
 			<a href="{{ path(route, params|merge({_locale: "es"})) }}">Español <span class="header-switch-flag flag flag-es"></span></a>
 		</div>
 		<div class="header-switch-row {{ is_polish_active }}">
-			<a href="{{ path(route, params|merge({_locale: "pl"})) }}">Polski <span class="header-switch-flag flag flag-pl"></span><a>
+			<a href="{{ path(route, params|merge({_locale: "pl"})) }}">Polski <span class="header-switch-flag flag flag-pl"></span></a>
 		</div>
 		<div class="header-switch-row {{ is_english_active }}">
 			<a href="{{ path(route, params|merge({_locale: "en"})) }}">English <span class="header-switch-flag flag flag-en"></span></a>
@@ -79,14 +80,12 @@
 		<div>Hotel NoName</div>
 		<div>© 2021</div>
 	</section>
-	<img class="footer-logo" src="{{ asset('img/logo_small.png') }}" alt=""/>
+	<img class="footer-logo" src="{{ asset('build/images/logo_small.png') }}" alt=""/>
 	<section class="footer-right">
 		<div>ul. Ulica 23</div>
 		<div>00-000 Kraków, Polska</div>
 		<div>tel. +48 00 000 00 00</div>
 	</section>
 </footer>
-{% block javascripts %}{% endblock %}
-
 </body>
 </html>

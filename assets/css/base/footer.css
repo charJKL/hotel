@@ -1,0 +1,29 @@
+.footer
+{
+	display: flex;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: 100%;
+	padding: 5px 0px 15px 0px;
+	margin: 10px 0px 0px 0px;
+	border-top: double 3px #000;
+}
+@media (min-width: 992px){ .footer{ width: var(--width); margin: 10px auto 0px auto;} }
+.footer-left > div
+{
+	display: block;
+	font: normal 14px / 18px var(--font);
+	text-align: right;
+}
+.footer-logo
+{
+	width: 30px;
+	height: 30px;
+	margin: 3px 10px;
+}
+.footer-right > div
+{
+	display: block;
+	font: normal 12px / 12px var(--font);
+	text-align: left;
+}

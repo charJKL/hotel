@@ -1,0 +1,45 @@
+@import "./global/normalize.css";
+@import "./global/form.css";
+
+:root {
+	--width: 992px;
+	--font: "Arial";
+	--form-font: "verdana";
+	--background-one:rgba(72, 184, 178, 1.0);
+	--background-two: rgba(78, 156, 226, 1.0);
+	--color-red: rgba(220, 30, 25, 1);
+	--color-gold: rgba(255, 200, 0, 1);
+	--color-green: rgba(0, 180, 0, 1);
+}
+*
+{
+	box-sizing: border-box;
+}
+a
+{
+	text-decoration:none;
+	color: inherit;
+}
+html
+{
+	height: 100%;
+}
+body
+{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: radial-gradient(ellipse at center, var(--background-one), var(--background-two)) center no-repeat, var(--background-two);
+	font: var(--font);
+}
+
+.main
+{
+	flex: 1 1 0;
+}
+
+@import "./base/header.css";
+@import "./base/nav.css";
+@import "./base/footer.css";

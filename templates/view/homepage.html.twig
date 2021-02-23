@@ -2,7 +2,12 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset("css/homepage.css") }}" rel="stylesheet"/>
+	{{ encore_entry_link_tags("homepage") }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags("homepage") }}
 {% endblock %}
 
 {% block body %}
@@ -59,9 +64,4 @@
 </form>
 
 {{ render_esi(controller('App\\Controller\\MainController::offers', {locale: app.request.locale})) }}
-{% endblock %}
-
-{% block javascripts %}
-	{{ parent() }}
-	<script src="{{ asset("/js/reservation.js") }}"></script>
 {% endblock %}

@@ -4,7 +4,7 @@
 	{# what if description become to long and overlay image? #}
 	{# add slider to manage too many offer in one row, do we want slider? #}
 	{% set css_class = "offers-css-" ~ offer.offerId %}
-	{% set offer_image = "/img/offer/offer-id-" ~ offer.offerId ~ ".png" %}
+	{% set offer_image = "build/images/offer/offer-id-" ~ offer.offerId ~ ".png" %}
 	<a class="offers-list-one {{css_class}}" href="{{ path('offer', {slug: offer.slug}) }}" >
 		<h1 class="offers-list-header">{{ offer.title }}</h1>
 		<p class="offers-list-desc">{{ offer.description|slice(0, 300) ~ '...' }}</p>

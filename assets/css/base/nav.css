@@ -1,0 +1,34 @@
+.nav
+{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	flex: 0 0 auto;
+	background: rgba(0, 0, 0, .9);
+}
+@media (min-width: 768px){ .nav{ flex-flow: row nowrap;} }
+@media (min-width: 992px){ .nav{ width: var(--width); margin: 0px auto;} }
+.nav-link
+{
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: baseline;
+	padding: 10px 10px;
+	color: #fff;
+}
+@media (min-width: 768px){ .nav-link{ flex-flow: column nowrap; margin: 0px 5px; } }
+.nav-link.active > .nav-main{ color: var(--color-red); }
+.nav-link.active > .nav-sub{ color: rgb(220, 200, 200); }
+.nav-link:not(.active):hover > .nav-main{ color: var(--color-gold); }
+.nav-link:not(.active):hover > .nav-sub{ color: rgb(255, 250, 210); }
+.nav-main
+{
+	letter-spacing: 1px;
+	font: small-caps 20px / 20px var(--font);
+	margin: 0px 5px 0px 0px;
+}
+.nav-sub
+{
+	font: normal 10px / 10px var(--font);
+}
+

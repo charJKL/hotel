@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset("css/offer.css") }}" rel="stylesheet"/>
+	{{ encore_entry_link_tags("offer") }}
 {% endblock %}
 
 {% block body %}
