@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=GuestRepository::class)
+ * @ORM\Table(name="guest", uniqueConstraints={@ORM\UniqueConstraint(name="unique_uuid", columns={"nationality", "uuid"})})
  */
 class Guest implements UserInterface
 {
@@ -19,10 +20,35 @@ class Guest implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $name;
-
+	
+	/**
+	 * @ORM\Column(type="string", nullable=true)
+	 */ 
+	private $surname;
+	
+	/**
+	 * @ORM\Column(type="string", nullable=true)
+	 */
+	private $nationality;
+	
+	/**
+	 * @ORM\Column(type="string", nullable=true)
+	 */
+	private $uuid;
+	
+	/**
+	 * @ORM\Column(type="string", nullable=true, unique=true) 
+	 */
+	private $email;
+	
+	/**
+	 * @ORM\Column(type="string", nullable=true, unique=true)
+	 */ 
+	private $phone;
+	
     /**
      * @ORM\Column(type="json")
      */
@@ -30,7 +56,7 @@ class Guest implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $password;
 
@@ -113,5 +139,65 @@ class Guest implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getNationality(): ?string
+    {
+        return $this->nationality;
+    }
+
+    public function setNationality(string $nationality): self
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    public function getUuid(): ?string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(string $uuid): self
+    {
+        $this->uuid = $uuid;
+
+        return $this;
     }
 }
