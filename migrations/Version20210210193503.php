@@ -28,4 +28,10 @@ final class Version20210210193503 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP TABLE reservation');
     }
+	 
+	// Fix: https://github.com/doctrine/migrations/issues/1104
+	public function isTransactional(): bool
+	{
+		return false;
+	}
 }
