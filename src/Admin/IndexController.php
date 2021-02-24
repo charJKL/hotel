@@ -1,12 +1,14 @@
 <?php
 namespace App\Admin;
 
+
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Repository\ReservationRepository;
+use App\Repository\AccommodationRepository;
 use App\Repository\RoomRepository;
 
 /**
@@ -16,12 +18,12 @@ use App\Repository\RoomRepository;
 class IndexController extends AbstractController
 {
 	private $roomRepository;
-	private $reservationRepository;
+	private $accommodationRepository;
 	
-	public function __construct(RoomRepository $roomRepository, ReservationRepository $reservationRepository)
+	public function __construct(RoomRepository $roomRepository, AccommodationRepository $accommodationRepository)
 	{
 		$this->roomRepository = $roomRepository;
-		$this->reservationRepository = $reservationRepository;
+		$this->accommodationRepository = $accommodationRepository;
 	}
 	
 	/**
@@ -38,8 +40,8 @@ class IndexController extends AbstractController
 	public function assignment() : Response
 	{
 		$rooms = $this->roomRepository->findAll();
-		$reservations = $this->reservationRepository->findAll();
-		return $this->render("admin/assignment.html.twig", ["rooms" => $rooms, "reservations" => $reservations]);
+		$accommodations = $this->accommodationRepository->findAll();
+		return $this->render("admin/assignment.html.twig", ["rooms" => $rooms, "accommodations" => $accommodations]);
 	}
 	
 	/**
@@ -52,11 +54,11 @@ class IndexController extends AbstractController
 	}
 	
 	/**
-	 * @Route("/reservation", name="admin/reservation");
+	 * @Route("/accommodations", name="admin/accommodations");
 	 */ 
-	public function reservation() : Response
+	public function accommodations() : Response
 	{
-		$reservations = $this->reservationRepository->findAll();
-		return $this->render("admin/reservation.html.twig", ["reservations" => $reservations]);
+		$accommodations = $this->accommodationRepository->findAll();
+		return $this->render("admin/accommodations.html.twig", ["accommodations" => $accommodations]);
 	}
 }
