@@ -21,6 +21,11 @@ login.form.continue:  Continue
 login.form.logout:  Logout
 login.form.remember_me: Remember me
 
+Invalid credentials.: Invalid credentials.
+Invalid CSRF token.: Invalid CSRF token.
+Username could not be found.: Username could not be found.
+Too many failed login attempts, please try again later.: Too many failed login attempts, please try again later.
+login.response.confim.user: Visit us and confirm your identity before login :)
 
 reservation.reservation.saved: Reservation has been made. Our employee will confirm it by message or phone.
 reservation.reservation.error: There was error, please try again. If the error repeats, contact us by phone or message.
@@ -43,4 +48,4 @@ reservation.stay.until?: I will stay until:
 
 admin.nav.assignment: Assignments
 admin.nav.rooms: Rooms
-admin.nav.reservation: Reservations
+admin.nav.accommodations: Accommodations

@@ -14,7 +14,7 @@
 {% block body %}
 	{% for result in app.flashes("security.error") %}
 		{% set css_class = "status-false" %}
-		<div class="sign-in-result {{ css_class }}"> {{ result.messageKey|trans(result.messageData, "security") }}</div>
+		<div class="sign-in-result {{ css_class }}"> {{ result.messageKey|trans(result.messageData) }}</div>
 	{% endfor %}
 	
 	<h1 class="sign-in-header">{{ "login.form.sign_in"|trans }}</h1>

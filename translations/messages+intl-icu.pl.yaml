@@ -21,6 +21,12 @@ login.form.continue:  Kontynuuj
 login.form.logout:  Wyloguj
 login.form.remember_me: Zapamiętaj mnie
 
+Invalid credentials.: Nieprawidłowe dane.
+Invalid CSRF token.: Nieprawidłowy token CSRF.
+Username could not be found.: Użytkownik o podanej nazwie nie istnieje.
+Too many failed login attempts, please try again later.: Zbyt dużo nieudanych prób logowania, spróbuj później.
+login.response.confim.user: Odwiedź nas i potwierdź swoją tożsamość przed logowaniem :)
+
 reservation.reservation.saved: Rezerwacja została złożona. Nasz pracownik potwierdzi ją wiadomością lub telefonem. 
 reservation.reservation.error: Wystąpił problem, spróbuj ponownie. Jeśli błąd się powtórzy, skontaktuj się telefonicznie lub mailowo.
 reservation.amount?: Liczba osób:
@@ -42,4 +48,4 @@ reservation.stay.until?: Zatrzymam się do:
 
 admin.nav.assignment: Przydział
 admin.nav.rooms: Pokoje
-admin.nav.reservation: Rezerwacje
+admin.nav.accommodations: Zakwaterowania

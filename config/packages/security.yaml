@@ -15,7 +15,6 @@ security:
         guest_provider:
           entity:
             class: App\Entity\Guest
-            property: name
         
         users:
           chain:

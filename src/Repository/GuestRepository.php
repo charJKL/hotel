@@ -2,12 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\Guest;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
+use App\Entity\Guest;
 
 /**
  * @method Guest|null find($id, $lockMode = null, $lockVersion = null)
@@ -15,12 +16,22 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @method Guest[]    findAll()
  * @method Guest[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GuestRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
+class GuestRepository extends ServiceEntityRepository implements PasswordUpgraderInterface, UserLoaderInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Guest::class);
     }
+
+	public function loadUserByUsername(string $username)
+	{
+		$query = $this->createQueryBuilder("g")->orWhere("g.email = :email")->orWhere("g.phone = :phone")->getQuery();
+		$query->setParameter('email', $username);
+		$query->setParameter('phone', $username);
+		
+		return $query->getOneOrNullResult();
+	}
+
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.

@@ -79,6 +79,8 @@ class LoginFormAuthenticator extends AbstractGuardAuthenticator implements Passw
 		$token = new CsrfToken('authenticate', $credentials['csrf_token']);
 		if($this->csrfTokenManager->isTokenValid($token) == false) throw new InvalidCsrfTokenException();
 		
+		if($user->getPassword() == null) throw new CustomUserMessageAuthenticationException("login.response.confim.user");
+		
 		return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
 	}
 
