@@ -1,0 +1,67 @@
+.reservation-sheet
+{
+	display: none;
+	background: rgba(255, 255, 255, 1);
+}
+@media (min-width: 576px){ .reservation-sheet{ display: flex; flex-flow: row nowrap; } }
+.reservation-sheet .ui-datepicker-multi
+{
+	display: flex !important;
+	flex-flow: row nowrap; 
+	width: 100% !important;
+	border: solid 1px rgba(0, 0, 0, 1);
+	border-radius: 0px;
+}
+.ui-datepicker-group
+{
+	flex: 1 0 0;
+	width: 100%;
+}
+.ui-datepicker-row-break
+{
+	display: none;
+}
+.reservation-sheet .ui-datepicker-header
+{
+	background: rgba(255, 255, 255, 1);
+	height: 50px;
+	border: none;
+}
+.reservation-sheet .ui-datepicker-title
+{
+	color: rgba(0, 0, 0, 1);
+	font: normal 16px / 50px var(--font);
+}
+.reservation-sheet .ui-datepicker-prev,
+.reservation-sheet .ui-datepicker-next
+{
+	top: 11px;
+}
+.ui-datepicker-calendar
+{
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+.ui-datepicker-week-end
+{
+	color: var(--color-red);
+}
+.reservation-sheet .ui-state-disabled
+{
+	opacity: 0.2;
+}
+.reservation-sheet .ui-state-default
+{
+	padding: 10px 0px;
+	background: none;
+	border: none;
+	font-weight: normal;
+	text-align: center;
+	color: inherit;
+}
+.reservation-sheet .ui-state-selected
+{
+	background: rgba(0, 0, 0, 1);
+	color: #fff;
+}
+.ui-datepicker-week-end.ui-state-selected{ color: var(--color-red); }

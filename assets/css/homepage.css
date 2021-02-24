@@ -64,8 +64,6 @@ input.reservation-submit
 @media (min-width: 576px){ .reservation-start, .reservation-end{ text-align: center; } }
 
 
-
-
 .offers-list
 {
 	display: flex;
