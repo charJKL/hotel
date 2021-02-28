@@ -1,8 +1,6 @@
 <?php
 namespace App\Admin;
 
-
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\AccommodationRepository;
 use App\Repository\RoomRepository;
+use DateInterval;
+use \DateTime;
 
 /**
  * @Route("{_locale}/admin")
@@ -39,9 +39,12 @@ class IndexController extends AbstractController
 	 */
 	public function assignment() : Response
 	{
-		$rooms = $this->roomRepository->findAll();
-		$accommodations = $this->accommodationRepository->findAll();
-		return $this->render("admin/assignment.html.twig", ["rooms" => $rooms, "accommodations" => $accommodations]);
+		$rooms = $this->roomRepository->findAllRoomInOrder();
+		
+		$from = (new DateTime("now"))->sub(new DateInterval("P3D")); // back 3 days earlier 
+		$to = (new DateTime("now"))->add(new DateInterval("P30D")); // add 30 
+		$accommodations = $this->accommodationRepository->findRoomAccommodation($from, $to);
+		return $this->render("admin/assignment.html.twig", ["from" => $from, "rooms" => $rooms, "accommodations" => $accommodations]);
 	}
 	
 	/**

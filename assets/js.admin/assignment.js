@@ -1,8 +1,7 @@
-window.addEventListener("load", function(){
-	var mouse = {};
-	mouse.onMouseDown = function(e)
-	{
-		console.log(e);
-	}
-	window.addEventListener("mousedown", mouse.onMouseDown);
-});
+import "../css.admin/assignment.css";
+
+import "./assignment/browsing.js";
+
+
+
+

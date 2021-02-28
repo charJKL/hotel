@@ -18,7 +18,12 @@ class RoomRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Room::class);
     }
-
+	
+	public function findAllRoomInOrder()
+	{
+		return $this->findBy([], ["number" => "ASC"]);
+	}
+	
     // /**
     //  * @return Room[] Returns an array of Room objects
     //  */

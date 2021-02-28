@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Accommodation;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -18,6 +19,29 @@ class AccommodationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Accommodation::class);
     }
+
+
+	public function findRoomAccommodation(DateTime $from, DateTime $to)
+	{
+		$sql = "
+			SELECT 
+				a, r, g
+			FROM 
+				App\Entity\Accommodation a
+			JOIN
+				a.rooms r
+			JOIN
+				a.guests g
+			WHERE
+					a.checkInAt > :from AND a.checkInAt < :to
+				OR 
+					a.checkOutAt > :from AND a.checkOutAt < :to";
+		
+		$query = $this->getEntityManager()->createQuery($sql);
+		$query->setParameter("from", $from);
+		$query->setParameter("to", $to);
+		return $query->getResult();
+	}
 
     // /**
     //  * @return Accommodation[] Returns an array of Accommodation objects

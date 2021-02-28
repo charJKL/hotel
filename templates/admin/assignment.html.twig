@@ -10,9 +10,59 @@
 	{{ encore_entry_script_tags("admin.assignment") }}
 {% endblock %}
 
+{% set roomToIndex = reIndexTo(rooms, "getNumber") %}
+{% set grid_height = 60 %}
+{% set grid_scale = 100 %}
+
 {% block body %}
 <section class="assignment">
-	ASSIGMNET
+	{# TODO Add top timeline with data #}
+	<div class="assignment-rooms-list">
+		<div class="assignment-rooms-list-box">
+			{% for room in rooms %}
+				{% set style = ["height", "#{grid_height}px", "line-height", "#{grid_height}px"] %}
+				<div class="room-block" {{ style|style }} >
+					<span class="room-block-number">{{ room.number }}</span>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="assignment-schedule" {{ grid_height|gridHeightAttr }} {{ grid_scale|gridScaleAttr }} >
+		<div class="assignment-schedule-grid">
+			{% for i in range(1, rooms|length) %}
+				{% set top = i * grid_height - 1 %}
+				{% set styles = ["top", "#{top}px"] %}
+				<hr class="assignment-schedule-line" {{ styles|style }} />
+			{% endfor %}
+		</div>
+		{# TODO Here is bug, during difference calculation we shouldn't consider time #}
+		{% set diff = date("now").diff(from) %}
+		{% set left = diff.days * grid_scale %}
+		{% set styles = ["left", "#{left}px"] %}
+		<hr class="assignment-schedule-line-today" {{ styles|style }} />
+		<div class="assignment-schedule-box">
+			{% for accommodation in accommodations %}
+				{% for room in accommodation.rooms %}
+					{% set diff = accommodation.checkInAt.diff(from) %}
+					{% set duration = accommodation.checkOutAt.diff(accommodation.checkInAt) %}
+					{% set width = duration.days * grid_scale %}
+					{% set left = diff.days * grid_scale %}
+					{% set top = roomToIndex[room.number] * grid_height %}
+					{% set styles = ["width", "#{width}px", "height", "#{grid_height}px", "left", "#{left}px", "top", "#{top}px"] %}
+					<div class="accommodation-block" {{ styles|style }} {{ accommodation.id|accommodationIdAttr}} {{ accommodation.checkInAt|date("Y-m-d")|checkInAtAttr }} {{ accommodation.checkOutAt|date("Y-m-d")|checkOutAtAttr }} >
+						{% for guest in accommodation.guests %}
+						<div class="accommodation-block-guest">
+							<span class="accommodation-block-nationality">{{ guest.nationality }}</span>
+							<span class="accommodation-block-name">{{ "#{guest.name} #{guest.surname}"}}</span>
+						</div>
+						{% endfor %}
+						<span class="accommodation-block-check-in-at">{{ accommodation.checkInAt|date("d-m-Y") }}</span>
+						<span class="accommodation-block-check-out-at">{{ accommodation.checkOutAt|date("d-m-Y") }}</span>
+					</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+	</div>
 </section>
 {% endblock %}
 

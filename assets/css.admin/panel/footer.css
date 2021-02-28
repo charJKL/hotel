@@ -1,0 +1,5 @@
+.footer
+{
+	flex: 0 0 20px;
+	background: var(--background-header);
+}

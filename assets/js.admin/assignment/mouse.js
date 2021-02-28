@@ -1,0 +1,1 @@
+export default {leftButton: 0, rightButton: 2};
