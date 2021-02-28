@@ -1,12 +1,15 @@
 <?php
 namespace App\Controller;
 
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Reservation;
+use App\Entity\Accommodation;
+use App\Entity\Guest;
+use App\Repository\GuestRepository;
 use App\Repository\OfferRepository;
 use stdClass;
 use DateTime;
@@ -91,7 +94,7 @@ class MainController extends AbstractController
 	/**
 	 * @Route("/book", methods={"POST"}, name="book")
 	 */
-	public function book(Request $request, EntityManagerInterface $em)
+	public function book(Request $request, EntityManagerInterface $em, GuestRepository $guestRepository)
 	{
 		try
 		{
@@ -108,15 +111,30 @@ class MainController extends AbstractController
 			if($start == "") throw new InvalidArgumentException();
 			if($end == "") throw new InvalidArgumentException();
 			
-			$reservation = new Reservation();
-				$reservation->setContact($request->request->get("contact"));
-				$reservation->setAmount($request->request->get("amount"));
-				$reservation->setRooms($request->request->get("rooms"));
-				$reservation->setStart(new DateTime($request->request->get("start")));
-				$reservation->setEnd(new DateTime($request->request->get("end")));
-				$reservation->setDate(new DateTime("now"));
+			$guest = $guestRepository->loadUserByUsername($contact);
+			if($guest == null)
+			{
+				$guest = new Guest();
+					$guest->setRoles(["ROLE_USER"]);
+					$isEmail = strpos($contact, "@") !== false;
+					switch($isEmail)
+					{
+						case true: $guest->setEmail($contact); break;
+						case false: $guest->setPhone($contact); break;
+					}
+				$em->persist($guest);
+			}
+			
+			$accommodation = new Accommodation();
+				$accommodation->setStatus(0);
+				$accommodation->setCheckInAt(new DateTime($start));
+				$accommodation->setCheckOutAt(new DateTime($end));
+				$accommodation->setBookAt(new DateTime("now"));
+				$accommodation->setPeopleAmount($amount);
+				$accommodation->setRoomsAmount($rooms);
+				$accommodation->addGuest($guest);
 				
-			$em->persist($reservation);
+			$em->persist($accommodation);
 			$em->flush();
 			$this->setFlash("reservation.result", true, "reservation.reservation.saved");
 		}
