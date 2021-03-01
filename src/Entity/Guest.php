@@ -170,6 +170,7 @@ class Guest implements UserInterface
         return $this->phone;
     }
 
+	// TODO phone number should be normalized.
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
