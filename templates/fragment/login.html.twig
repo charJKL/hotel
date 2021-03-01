@@ -1,6 +1,14 @@
 {% if is_granted("ROLE_USER") %}
 <div class="header-login-account">
 	<div class="header-login-account-name">{{ app.user.name }}</div>
+	{% if is_granted("ROLE_EMPLOYEE") %}
+	<a class="header-login-account-logout" href="{{ ea_url().setDashboard('App\\Easy\\DashboardController') }}">
+		<input type="button" value="{{ 'login.form.easy'|trans }}"/>
+	</a>
+	<a class="header-login-account-logout" href="{{ path("admin") }}">
+		<input type="button" value="{{ 'login.form.admin'|trans }}"/>
+	</a>
+	{% endif %}
 	<a class="header-login-account-logout" href="{{ path("logout") }}">
 		<input type="button" value="{{ 'login.form.logout'|trans }}"/>
 	</a>

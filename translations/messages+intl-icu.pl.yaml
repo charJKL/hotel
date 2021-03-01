@@ -20,6 +20,8 @@ login.form.password: Hasło
 login.form.continue:  Kontynuuj
 login.form.logout:  Wyloguj
 login.form.remember_me: Zapamiętaj mnie
+login.form.easy: Łatwy Admin
+login.form.admin: Panel Admin
 
 Invalid credentials.: Nieprawidłowe dane.
 Invalid CSRF token.: Nieprawidłowy token CSRF.

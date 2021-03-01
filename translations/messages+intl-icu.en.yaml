@@ -20,6 +20,8 @@ login.form.password: Password
 login.form.continue:  Continue
 login.form.logout:  Logout
 login.form.remember_me: Remember me
+login.form.easy: Easy Admin
+login.form.admin: Panel Admin
 
 Invalid credentials.: Invalid credentials.
 Invalid CSRF token.: Invalid CSRF token.
