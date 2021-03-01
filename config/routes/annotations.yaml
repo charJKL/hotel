@@ -12,6 +12,11 @@ admin:
   requirements:
     _locale: "%locales%"
 
+easy:
+  resource: ../../src/Easy
+  type: annotation
+  locale: en
+
 kernel:
   resource: ../../src/Kernel.php
   type: annotation

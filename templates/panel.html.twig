@@ -23,12 +23,14 @@
 </header>
 <nav class="nav">
 	{# TODO find a better way to do it, use some twig function? write own? #}
+	{% set rooms_url = ea_url().setController("App\\Easy\\RoomCrudController") %}
+	{% set accommodations_url = ea_url().setController("App\\Easy\\AccommodationCrudController") %}
 	{% set is_assignment_active = app.request.get("_route") == "admin/assignment" ? "active" : "" %}
 	{% set is_rooms_active = app.request.get("_route") == "admin/rooms" ? "active" : "" %}
 	{% set is_accommodations_active = app.request.get("_route") == "admin/accommodations" ? "active" : "" %}
 	<a href="{{ path('admin/assignment') }}" class="nav-link {{ is_assignment_active }}">{{ "admin.nav.assignment"|trans }}</a>
-	<a href="{{ path('admin/rooms') }}" class="nav-link {{ is_rooms_active }}">{{ "admin.nav.rooms"|trans }}</a>
-	<a href="{{ path('admin/accommodations') }}" class="nav-link {{ is_accommodations_active }}">{{ "admin.nav.accommodations"|trans }}</a>
+	<a href="{{ rooms_url }}" class="nav-link {{ is_rooms_active }}">{{ "admin.nav.rooms"|trans }}</a>
+	<a href="{{ accommodations_url }}" class="nav-link {{ is_accommodations_active }}">{{ "admin.nav.accommodations"|trans }}</a>
 </nav>
 
 <main class="main">
