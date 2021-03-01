@@ -17,15 +17,24 @@ class RoomFixtures extends Fixture
 				$room->setNumber($i);
 				$room->setFeatures($this->generateRoomFeatures(0, 3));
 				$manager->persist($room);
+				$this->addReference("room-$i", $room);
 		}
-		for($i = 200; $i < 210; $i++)
+		for($i = 300; $i < 303; $i++)
+		{
+			$room = new Room();
+				$room->setNumber($i);
+				$room->setFeatures($this->generateRoomFeatures(0, 3));
+				$manager->persist($room);
+				$this->addReference("room-$i", $room);
+		}
+		for($i = 200; $i < 206; $i++)
 		{
 			$room = new Room();
 				$room->setNumber($i);
 				$room->setFeatures($this->generateRoomFeatures(1, 2));
 				$manager->persist($room);
+				$this->addReference("room-$i", $room);
 		}
-		
 		$manager->flush();
 	}
 	

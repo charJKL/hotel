@@ -21,16 +21,26 @@ class GuestFixtures extends Fixture
 	{
 		$guest = new Guest();
 			$password = $this->passwordEncoder->encodePassword($guest, "password");
-			$guest->setName("jan.kowalski@gmail.com");
-			$guest->setRoles(["ROLE_GUEST"]);
+			$guest->setName("Jan");
+			$guest->setSurname("Kowalski");
+			$guest->setNationality("PL");
+			$guest->setUuid("11222444555");
+			$guest->setEmail("jan.kowalski@gmail.com");
+			$guest->setPhone("+45 000 555 666");
 			$guest->setPassword($password);
+			$guest->setRoles(["ROLE_GUEST"]);
 			$manager->persist($guest);
-		
+
 		$guest = new Guest();
 			$password = $this->passwordEncoder->encodePassword($guest, "password");
-			$guest->setName("jan.nowak@gmail.com");
-			$guest->setRoles(["ROLE_GUEST"]);
+			$guest->setName("Marek");
+			$guest->setSurname("Nowak");
+			$guest->setNationality("PL");
+			$guest->setUuid("00555777888");
+			$guest->setEmail("marek.nowak@gmail.com");
+			$guest->setPhone("600800111");
 			$guest->setPassword($password);
+			$guest->setRoles(["ROLE_GUEST"]);
 			$manager->persist($guest);
 		
 		$manager->flush();
