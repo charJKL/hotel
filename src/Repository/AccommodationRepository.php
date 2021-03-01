@@ -15,12 +15,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AccommodationRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Accommodation::class);
-    }
-
-
+   public function __construct(ManagerRegistry $registry)
+	{
+		parent::__construct($registry, Accommodation::class);
+   }
+	 
 	public function findRoomAccommodation(DateTime $from, DateTime $to)
 	{
 		$sql = "
@@ -41,6 +40,20 @@ class AccommodationRepository extends ServiceEntityRepository
 		$query->setParameter("from", $from);
 		$query->setParameter("to", $to);
 		return $query->getResult();
+	}
+
+	public function findRequiredActions()
+	{
+		$sql = "
+			SELECT 
+				COUNT(a.id)
+			FROM
+				App\Entity\Accommodation a
+			WHERE
+				a.status = 0";
+		
+		$query = $this->getEntityManager()->createQuery($sql);
+		return $query->getSingleScalarResult();
 	}
 
     // /**

@@ -49,27 +49,6 @@ body
 	font: normal 16px / 35px var(--font);
 }
 
-
-.nav
-{
-	display: flex;
-	flex-flow: row nowrap;
-	background: var(--background-header);
-}
-.nav-link
-{
-	padding: 0px 8px;
-	margin: 0px 5px;
-	background: var(--background-tab);
-	border: solid 1px transparent;
-	border-bottom: none;
-	font: normal 16px / 30px var(--font);
-	text-decoration: none;
-	color: #000;
-}
-.nav-link.active{ border-color: rgba(0, 0, 0, 1);}
-
-
 .main
 {
 	flex: 1 0 0;

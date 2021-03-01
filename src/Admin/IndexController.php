@@ -20,10 +20,14 @@ class IndexController extends AbstractController
 	private $roomRepository;
 	private $accommodationRepository;
 	
+	public $accommodationsRequireActions;
+	
 	public function __construct(RoomRepository $roomRepository, AccommodationRepository $accommodationRepository)
 	{
 		$this->roomRepository = $roomRepository;
 		$this->accommodationRepository = $accommodationRepository;
+		
+		$this->accommodationsRequireActions = $this->accommodationRepository->findRequiredActions();
 	}
 	
 	/**

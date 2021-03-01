@@ -1,2 +1,5 @@
 twig:
-    default_path: '%kernel.project_dir%/templates'
+  default_path: '%kernel.project_dir%/templates'
+  globals:
+    # TODO this variable should be available only for admins templates, those extend templates/panel.html.twig
+    adminNotification: "@App\\Admin\\IndexController" 

@@ -28,9 +28,21 @@
 	{% set is_assignment_active = app.request.get("_route") == "admin/assignment" ? "active" : "" %}
 	{% set is_rooms_active = app.request.get("_route") == "admin/rooms" ? "active" : "" %}
 	{% set is_accommodations_active = app.request.get("_route") == "admin/accommodations" ? "active" : "" %}
-	<a href="{{ path('admin/assignment') }}" class="nav-link {{ is_assignment_active }}">{{ "admin.nav.assignment"|trans }}</a>
-	<a href="{{ rooms_url }}" class="nav-link {{ is_rooms_active }}">{{ "admin.nav.rooms"|trans }}</a>
-	<a href="{{ accommodations_url }}" class="nav-link {{ is_accommodations_active }}">{{ "admin.nav.accommodations"|trans }}</a>
+	
+	<a href="{{ path('admin/assignment') }}" class="nav-link {{ is_assignment_active }}">
+		{{ "admin.nav.assignment"|trans }}
+	</a>
+	
+	<a href="{{ rooms_url }}" class="nav-link {{ is_rooms_active }}">
+		{{ "admin.nav.rooms"|trans }}
+	</a>
+	
+	<a href="{{ accommodations_url }}" class="nav-link {{ is_accommodations_active }}">
+		{{ "admin.nav.accommodations"|trans }}
+		{% if adminNotification.accommodationsRequireActions > 0 %}
+			<span class="nav-link-notification">{{ adminNotification.accommodationsRequireActions }}</span>
+		{% endif %}
+	</a>
 </nav>
 
 <main class="main">
