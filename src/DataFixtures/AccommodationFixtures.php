@@ -37,7 +37,6 @@ class AccommodationFixtures extends Fixture implements DependentFixtureInterface
 			$guest->setUuid("00558777987");
 			$guest->setEmail("tadeusz@szyszka.com.pl");
 			$guest->setPhone("530 698 458");
-			$guest->setRoles(["ROLE_GUEST"]);
 			$accommodation->addGuest($guest);
 			$manager->persist($guest);
 		$guest = new Guest();
@@ -45,7 +44,6 @@ class AccommodationFixtures extends Fixture implements DependentFixtureInterface
 			$guest->setSurname("Szyszka");
 			$guest->setNationality("PL");
 			$guest->setUuid("22555777888");
-			$guest->setRoles(["ROLE_GUEST"]);
 			$accommodation->addGuest($guest);
 			$manager->persist($guest);
 
@@ -67,7 +65,6 @@ class AccommodationFixtures extends Fixture implements DependentFixtureInterface
 			$guest->setUuid("4567981300");
 			$guest->setEmail("marcin.nowak@email.com");
 			$guest->setPhone("+44 550 666 444");
-			$guest->setRoles(["ROLE_GUEST"]);
 			$accommodation->addGuest($guest);
 			$manager->persist($guest);
 		
@@ -88,7 +85,6 @@ class AccommodationFixtures extends Fixture implements DependentFixtureInterface
 			$guest->setUuid("11555666444");
 			$guest->setEmail("guest@gmail.com");
 			$guest->setPhone("+48 600 500 100");
-			$guest->setRoles(["ROLE_GUEST"]);
 			$accommodation->addGuest($guest);
 			$manager->persist($guest);
 

@@ -28,7 +28,6 @@ class GuestFixtures extends Fixture
 			$guest->setEmail("jan.kowalski@gmail.com");
 			$guest->setPhone("+45 000 555 666");
 			$guest->setPassword($password);
-			$guest->setRoles(["ROLE_GUEST"]);
 			$manager->persist($guest);
 
 		$guest = new Guest();
@@ -40,7 +39,6 @@ class GuestFixtures extends Fixture
 			$guest->setEmail("marek.nowak@gmail.com");
 			$guest->setPhone("600800111");
 			$guest->setPassword($password);
-			$guest->setRoles(["ROLE_GUEST"]);
 			$manager->persist($guest);
 		
 		$manager->flush();
