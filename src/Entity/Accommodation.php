@@ -20,7 +20,7 @@ class Accommodation
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
      */
     private $status;
 
@@ -35,17 +35,17 @@ class Accommodation
     private $checkOutAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $bookAt;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"unsigned":true})
      */
     private $roomsAmount;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"unsigned":true})
      */
     private $peopleAmount;
 	 
@@ -61,8 +61,9 @@ class Accommodation
 
     public function __construct()
     {
-        $this->rooms = new ArrayCollection();
-        $this->guests = new ArrayCollection();
+		$this->status = 0;
+		$this->rooms = new ArrayCollection();
+		$this->guests = new ArrayCollection();
     }
 
     public function getId(): ?int
