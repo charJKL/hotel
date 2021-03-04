@@ -99,7 +99,7 @@ class MainController extends AbstractController
 	/**
 	 * @Route("/book", methods={"POST"}, name="book")
 	 */
-	public function book(Request $request, EntityManagerInterface $em, GuestRepository $guestRepository)
+	public function book(Request $request, EntityManagerInterface $em)
 	{
 		$accommodation = new Accommodation();
 		$form = $this->createForm(ReservationType::class, $accommodation);
@@ -108,23 +108,6 @@ class MainController extends AbstractController
 		if($form->isSubmitted() && $form->isValid())
 		{
 			$accommodation = $form->getData();
-			
-			// TODO remove this logic by Form/DataTransforms.
-			$contact = $form->get("contact")->getData();
-			$guest = $guestRepository->loadUserByUsername($contact);
-			if($guest == null)
-			{
-				$guest = new Guest();
-					$guest->setRoles(["ROLE_USER"]);
-					$isEmail = strpos($contact, "@") !== false;
-					switch($isEmail)
-					{
-						case true: $guest->setEmail($contact); break;
-						case false: $guest->setPhone($contact); break;
-					}
-				$em->persist($guest);
-			}
-			
 			$em->persist($accommodation);
 			$em->flush();
 			$this->setFlash("reservation.result", true, "reservation.reservation.saved");

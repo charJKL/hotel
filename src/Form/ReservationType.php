@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Accommodation;
+
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,14 +13,18 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
+use App\Form\Transformer\ContactToEmailOrPhoneTransformer;
+use App\Entity\Accommodation;
 
 
 class ReservationType extends AbstractType
 {
+	private $contactToEmailOrPhoneTransformer;
 	private $translator;
 	
-	public function __construct(TranslatorInterface $translator)
+	public function __construct(ContactToEmailOrPhoneTransformer $contactToEmailOrPhoneTransformer, TranslatorInterface $translator)
 	{
+		$this->contactToEmailOrPhoneTransformer = $contactToEmailOrPhoneTransformer;
 		$this->translator = $translator;
 	}
 	
@@ -37,6 +41,8 @@ class ReservationType extends AbstractType
 		$builder->add('peopleAmount', ChoiceType::class, ["label" => "reservation.rooms?", "choices" => $peopleAmountChoices]);
 		$builder->add("contact", TextType::class, ["label" => "reservation.contact", "mapped" => false]);
 		$builder->add('book', SubmitType::class, ["label" => "reservation.booking"]);
+		
+		$builder->get("contact")->addModelTransformer($this->contactToEmailOrPhoneTransformer);
 	}
 
 	public function configureOptions(OptionsResolver $resolver)
