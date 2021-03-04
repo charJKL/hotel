@@ -1,5 +1,6 @@
 import "./css/homepage.css";
 import "./css/homepage/datapicker.css";
+import "./css/homepage/reservation.css";
 
 import "jquery-ui/themes/base/core.css";
 import "jquery-ui/themes/base/datepicker.css";
@@ -7,6 +8,7 @@ import "jquery-ui/themes/base/theme.css";
 
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/datepicker';
+
 
 Date.prototype.format = function()
 {

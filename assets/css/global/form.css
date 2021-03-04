@@ -4,7 +4,8 @@ label
 	margin: 2px 0px;
 }
 input,
-select
+select,
+button
 {
 	box-sizing: border-box;
 	width: 100%;
@@ -36,8 +37,8 @@ input[type="checkbox"] + span
 	cursor: pointer;
 	user-select: none;
 }
-input[type="submit"],
-input[type="button"]
+button[type="submit"],
+button[type="button"]
 {
 	padding: 6px 5px;
 	background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);

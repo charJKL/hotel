@@ -11,6 +11,7 @@ use App\Entity\Accommodation;
 use App\Entity\Guest;
 use App\Repository\GuestRepository;
 use App\Repository\OfferRepository;
+use App\Form\ReservationType;
 use stdClass;
 use DateTime;
 use Exception;
@@ -37,7 +38,11 @@ class MainController extends AbstractController
 	 */
 	public function homepage() : Response
 	{
-		return $this->render("view/homepage.html.twig");
+		$accommodation = new Accommodation();
+		$accommodation->setCheckInAt(new DateTime());
+		$option = ["method" => "POST", "action" => $this->generateUrl("book")];
+		$form = $this->createForm(ReservationType::class, $accommodation, $option)->createView();
+		return $this->render("view/homepage.html.twig", ["form" => $form]);
 	}
 	
 	/**
@@ -96,21 +101,16 @@ class MainController extends AbstractController
 	 */
 	public function book(Request $request, EntityManagerInterface $em, GuestRepository $guestRepository)
 	{
-		try
+		$accommodation = new Accommodation();
+		$form = $this->createForm(ReservationType::class, $accommodation);
+		
+		$form->handleRequest($request);
+		if($form->isSubmitted() && $form->isValid())
 		{
-			$contact = $request->request->get("contact");
-			$amount = $request->request->get("amount");
-			$rooms = $request->request->get("rooms");
-			$start = $request->request->get("start");
-			$end = $request->request->get("end");
+			$accommodation = $form->getData();
 			
-			// TODO validate inputs, use symfony/forms
-			if($contact == "") throw new InvalidArgumentException();
-			if($amount == "") throw new InvalidArgumentException();
-			if($rooms == "") throw new InvalidArgumentException();
-			if($start == "") throw new InvalidArgumentException();
-			if($end == "") throw new InvalidArgumentException();
-			
+			// TODO remove this logic by Form/DataTransforms.
+			$contact = $form->get("contact")->getData();
 			$guest = $guestRepository->loadUserByUsername($contact);
 			if($guest == null)
 			{
@@ -125,25 +125,9 @@ class MainController extends AbstractController
 				$em->persist($guest);
 			}
 			
-			$accommodation = new Accommodation();
-				$accommodation->setStatus(0);
-				$accommodation->setCheckInAt(new DateTime($start));
-				$accommodation->setCheckOutAt(new DateTime($end));
-				$accommodation->setBookAt(new DateTime("now"));
-				$accommodation->setPeopleAmount($amount);
-				$accommodation->setRoomsAmount($rooms);
-				$accommodation->addGuest($guest);
-				
 			$em->persist($accommodation);
 			$em->flush();
 			$this->setFlash("reservation.result", true, "reservation.reservation.saved");
-		}
-		catch(Exception $e) 
-		{
-			$this->setFlash("reservation.result", false, "reservation.reservation.error");
-		}
-		finally
-		{
 			return $this->redirectToRoute("homepage", [], 303);
 		}
 	}
