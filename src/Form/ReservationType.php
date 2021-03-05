@@ -11,11 +11,13 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use App\Form\Transformer\ContactToEmailOrPhoneTransformer;
 use App\Entity\Accommodation;
-
+use PhpParser\Node\Expr\FuncCall;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceLabel;
 
 class ReservationType extends AbstractType
 {
@@ -30,15 +32,17 @@ class ReservationType extends AbstractType
 	
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		// TODO process for translating options should be done in Twig templates. 
-		// Take a look on: https://github.com/symfony/form/commit/8cc1f8eb1221aedc8e6c2df555379c3bf0acd6bf
-		$roomAmountChoices = $this->getRoomAmountChoices();
-		$peopleAmountChoices = $this->getPeopleAmountChoices();
+		$roomAmountChoices = [1, 2, 3, 4];
+		$peopleAmountChoices = [1, 2, 3, 4];
+
+		$choiceLabelRooms = function($choice, $key, $value){ return "reservation.rooms"; };
+		$choiceLabelAmount = function($choice, $key, $value){ return "reservation.amount"; };
+		$choiceTranslationParameters = [["amount"=>1], ["amount"=>2], ["amount"=>3], ["amount"=>4], ["amount"=>5]];
 		
 		$builder->add('checkInAt', DateType::class, ["label" => "reservation.checkin.date?", "widget" => "single_text"]);
 		$builder->add('checkOutAt', DateType::class, ["label" => "reservation.stay.until?", "widget" => "single_text"]);
-		$builder->add('roomsAmount', ChoiceType::class, ["label" => "reservation.amount?", "choices" => $roomAmountChoices]);
-		$builder->add('peopleAmount', ChoiceType::class, ["label" => "reservation.rooms?", "choices" => $peopleAmountChoices]);
+		$builder->add('roomsAmount', ChoiceType::class, ["label" => "reservation.rooms?", "choices" => $roomAmountChoices, "choice_label" => $choiceLabelRooms, "choice_translation_parameters" => $choiceTranslationParameters]);
+		$builder->add('peopleAmount', ChoiceType::class, ["label" => "reservation.amount?", "choices" => $peopleAmountChoices, "choice_label" => $choiceLabelAmount, "choice_translation_parameters" => $choiceTranslationParameters]);
 		$builder->add("contact", TextType::class, ["label" => "reservation.contact", "mapped" => false]);
 		$builder->add('book', SubmitType::class, ["label" => "reservation.booking"]);
 		
@@ -59,27 +63,4 @@ class ReservationType extends AbstractType
 			$child->vars["label_attr"] = ["class" => "reservation-label reservation-label-{$child->vars["name"]}"];
 		}
 	}
-	
-	private function getRoomAmountChoices()
-	{
-		return 
-		[
-			$this->translator->trans("reservation.rooms", ["rooms" => 1]) => 1,
-			$this->translator->trans("reservation.rooms", ["rooms" => 2]) => 2,
-			$this->translator->trans("reservation.rooms", ["rooms" => 3]) => 3,
-			$this->translator->trans("reservation.rooms", ["rooms" => 4]) => 4,
-		];
-	}
-	
-	private function getPeopleAmountChoices()
-	{
-		return 
-		[
-			$this->translator->trans("reservation.amount", ["persons" => 1]) => 1,
-			$this->translator->trans("reservation.amount", ["persons" => 2]) => 2,
-			$this->translator->trans("reservation.amount", ["persons" => 3]) => 3,
-			$this->translator->trans("reservation.amount", ["persons" => 4]) => 4,
-		];
-	}
-	
 }

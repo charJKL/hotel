@@ -33,14 +33,14 @@ reservation.reservation.saved: Reservation has been made. Our employee will conf
 reservation.reservation.error: There was error, please try again. If the error repeats, contact us by phone or message.
 reservation.amount?: Persons amount:
 reservation.amount: >- 
-  {persons, plural, 
+  {amount, plural, 
     =1 {# person}
     other {# persons}
   }
 reservation.rooms?: Required rooms:
-reservation.rooms:  >-
-  {rooms, plural, 
-    =1 {# room}
+reservation.rooms: >-
+  {amount, plural,
+    =1 {1 room}
     other {# rooms}
   }
 reservation.contact: Phone or email:

@@ -33,13 +33,13 @@ reservation.reservation.saved: Rezerwacja została złożona. Nasz pracownik pot
 reservation.reservation.error: Wystąpił problem, spróbuj ponownie. Jeśli błąd się powtórzy, skontaktuj się telefonicznie lub mailowo.
 reservation.amount?: Liczba osób:
 reservation.amount: >- 
-  {persons, plural, 
+  {amount, plural, 
     =1 {# osoba}
     other {# osoby}
   }
 reservation.rooms?: Liczba pokoi:
 reservation.rooms:  >-
-  {rooms, plural, 
+  {amount, plural, 
     =1 {# pokój}
     other {# pokoje}
   }
