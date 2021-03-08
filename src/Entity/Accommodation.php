@@ -6,6 +6,7 @@ use App\Repository\AccommodationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AccommodationRepository::class)
@@ -21,6 +22,7 @@ class Accommodation
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
+	  * @Assert\Choice(callback="getStatusList")
      */
     private $status;
 
@@ -41,11 +43,13 @@ class Accommodation
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})
+	  * @Assert\Choice(callback="getRoomsAmountOptions")
      */
     private $roomsAmount;
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})
+	  * @Assert\Choice(callback="getPeopleAmountOptions")
      */
     private $peopleAmount;
 	 
@@ -59,12 +63,32 @@ class Accommodation
 	 */ 
 	private $guests;
 
-    public function __construct()
-    {
-		$this->status = 0;
+	const BOOKED = 0;
+	const CONFIRMED = 1;
+	const CHECKED_IN = 2;
+	const CHECKED_OUT = 3;
+
+	public function __construct()
+	{
+		$this->status = 5;
 		$this->rooms = new ArrayCollection();
 		$this->guests = new ArrayCollection();
-    }
+	}
+
+	public function getStatusList()
+	{
+		return [self::BOOKED, self::CONFIRMED, self::CHECKED_IN, self::CHECKED_OUT];
+	}
+	
+	public function getRoomsAmountOptions()
+	{
+		return [1];
+	}
+	
+	public function getPeopleAmountOptions()
+	{
+		return [1, 2, 3, 4];
+	}
 
     public function getId(): ?int
     {

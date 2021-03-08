@@ -36,12 +36,23 @@ class MainController extends AbstractController
 	/**
 	 * @Route("", name="homepage")
 	 */
-	public function homepage() : Response
+	public function homepage(Request $request, EntityManagerInterface $em) : Response
 	{
 		$accommodation = new Accommodation();
 		$accommodation->setCheckInAt(new DateTime());
-		$option = ["method" => "POST", "action" => $this->generateUrl("book")];
-		$form = $this->createForm(ReservationType::class, $accommodation, $option)->createView();
+		$option = ["method" => "POST"];
+		
+		$form = $this->createForm(ReservationType::class, $accommodation, $option);
+		$form->handleRequest($request);
+		if($form->isSubmitted() && $form->isValid())
+		{
+			$accommodation = $form->getData();
+			$em->persist($accommodation);
+			$em->flush();
+			$this->setFlash("reservation.result", true, "reservation.reservation.saved");
+		}
+		
+		$form = $form->createView();
 		return $this->render("view/homepage.html.twig", ["form" => $form]);
 	}
 	
@@ -94,25 +105,6 @@ class MainController extends AbstractController
 		if($offer == null) throw new NotFoundHttpException("Page doesn't exist"); // TODO change comment to "offer doesn't exist";
 		
 		return $this->render("view/offer.html.twig", ["offer" => $offer]);
-	}
-	
-	/**
-	 * @Route("/book", methods={"POST"}, name="book")
-	 */
-	public function book(Request $request, EntityManagerInterface $em)
-	{
-		$accommodation = new Accommodation();
-		$form = $this->createForm(ReservationType::class, $accommodation);
-		
-		$form->handleRequest($request);
-		if($form->isSubmitted() && $form->isValid())
-		{
-			$accommodation = $form->getData();
-			$em->persist($accommodation);
-			$em->flush();
-			$this->setFlash("reservation.result", true, "reservation.reservation.saved");
-			return $this->redirectToRoute("homepage", [], 303);
-		}
 	}
 	
 	public function offers(Request $request, OfferRepository $offerRepository) : Response

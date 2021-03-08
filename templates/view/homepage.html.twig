@@ -13,7 +13,9 @@
 
 {% block body %}
 	{{ form_start(form, {attr: {"class": "reservation-form"}}) }}
-		{{ form_errors(form) }}
+		{% dump(form) %}
+    {{ form_errors(form) }}
+
 		<div class="reservation-row reservation-row-dates">
 			{{ form_row(form.checkInAt) }}
 			{{ form_row(form.checkOutAt) }}
