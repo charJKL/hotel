@@ -14,20 +14,20 @@
 .reservation-result.status-true{color: var(--color-green) }
 .reservation-result.status-false{color: var(--color-red); }
 @media (min-width: 992px){ .reservation-form{ width: calc(var(--width) - 20px); margin: 10px auto 0px auto; } }
-.reservation-row
+.reservation-line
 {
 	display: flex;
 	flex-flow: column nowrap;
 }
-@media (min-width: 576px){ .reservation-row{ flex-flow: row nowrap;} }
-@media (min-width: 576px){ .reservation-row-dates{ order: 1;} }
-@media (min-width: 576px){ .reservation-row-info{ order: 0;} }
-@media (min-width: 576px){ .reservation-row-sheet{ order: 2;} }
-.reservation-div
+@media (min-width: 576px){ .reservation-line{ flex-flow: row nowrap;} }
+@media (min-width: 576px){ .reservation-line-dates{ order: 1;} }
+@media (min-width: 576px){ .reservation-line-info{ order: 0;} }
+@media (min-width: 576px){ .reservation-line-sheet{ order: 2;} }
+.reservation-row
 {
 	position: relative;
 }
-@media (min-width: 576px){ .reservation-div{ flex: 1 0 0; } }
+@media (min-width: 576px){ .reservation-row{ flex: 1 0 0; } }
 .reservation-label
 {
 	display: block;
@@ -37,11 +37,13 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+.reservation-label.invalid-value{ color: var(--color-red); }
 .reservation-input
 {
 	padding: 20px 0px 5px 10px;
 	height: 50px;
 }
-@media (min-width: 576px){ .reservation-div-contact{ flex: 0 0 200px;} }
-@media (min-width: 576px){ .reservation-div-book{ flex: 0 0 150px;} }
+.reservation-input.invalid-value{ border-color: var(--color-red); }
+@media (min-width: 576px){ .reservation-row-contact{ flex: 0 0 200px;} }
+@media (min-width: 576px){ .reservation-row-book{ flex: 0 0 150px;} }
 @media (min-width: 576px){ .reservation-input-checkInAt, .reservation-input-checkOutAt{ text-align: center; } }

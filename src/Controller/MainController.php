@@ -43,6 +43,7 @@ class MainController extends AbstractController
 		$option = ["method" => "POST"];
 		
 		$form = $this->createForm(ReservationType::class, $accommodation, $option);
+		
 		$form->handleRequest($request);
 		if($form->isSubmitted() && $form->isValid())
 		{

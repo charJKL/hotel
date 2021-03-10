@@ -29,8 +29,6 @@ Username could not be found.: Username could not be found.
 Too many failed login attempts, please try again later.: Too many failed login attempts, please try again later.
 login.response.confim.user: Visit us and confirm your identity before login :)
 
-reservation.reservation.saved: Reservation has been made. Our employee will confirm it by message or phone.
-reservation.reservation.error: There was error, please try again. If the error repeats, contact us by phone or message.
 reservation.amount?: Persons amount:
 reservation.amount: >- 
   {amount, plural, 
@@ -47,6 +45,19 @@ reservation.contact: Phone or email:
 reservation.booking: Book
 reservation.checkin.date?: I will check in:
 reservation.stay.until?: I will stay until:
+
+reservation.reservation.saved: Reservation has been made. Our employee will confirm it by message or phone.
+reservation.reservation.error: There was error, please try again. If the error repeats, contact us by phone or message.
+reservation.checkindate.is.invalid: Checkin date is invalid.
+reservation.checkoutdate.is.invalid: Checkout date is invalid.
+reservation.roomsAmount.is.invalid: Rooms amount is invalid.
+reservation.peopleAmount.is.invalid: People amount is invalid.
+reservation.contact.is.invalid: Contact information is invalid.
+accomodation.status.choice: Accomodation status is wrong.
+accomodation.checkInAt.not.blank: Provide valid checkin date.
+accomodation.checkOutAt.not.blank: Provide valid checkout date.
+accomodation.roomsAmount.choice: Provide valid rooms amount.
+accomodation.peopleAmount.choice: Provide valid people amount.
 
 admin.nav.assignment: Assignments
 admin.nav.rooms: Rooms

@@ -22,17 +22,19 @@ class Accommodation
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
-	  * @Assert\Choice(callback="getStatusList")
+	  * @Assert\Choice(callback="getStatusList", message="accomodation.status.choice")
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime")
+	  * @Assert\NotBlank(message="accomodation.checkInAt.not.blank")
      */
     private $checkInAt;
 
     /**
      * @ORM\Column(type="datetime")
+	  * @Assert\NotBlank(message="accomodation.checkOutAt.not.blank")
      */
     private $checkOutAt;
 
@@ -43,13 +45,13 @@ class Accommodation
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})
-	  * @Assert\Choice(callback="getRoomsAmountOptions")
+	  * @Assert\Choice(callback="getRoomsAmountOptions", message="accomodation.roomsAmount.choice")
      */
     private $roomsAmount;
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})
-	  * @Assert\Choice(callback="getPeopleAmountOptions")
+	  * @Assert\Choice(callback="getPeopleAmountOptions",  message="accomodation.peopleAmount.choice")
      */
     private $peopleAmount;
 	 
@@ -70,22 +72,22 @@ class Accommodation
 
 	public function __construct()
 	{
-		$this->status = 5;
+		$this->status = self::BOOKED;
 		$this->rooms = new ArrayCollection();
 		$this->guests = new ArrayCollection();
 	}
 
-	public function getStatusList()
+	public static function getStatusList()
 	{
 		return [self::BOOKED, self::CONFIRMED, self::CHECKED_IN, self::CHECKED_OUT];
 	}
 	
-	public function getRoomsAmountOptions()
+	public static function getRoomsAmountOptions()
 	{
-		return [1];
+		return [1, 2, 3, 4];
 	}
 	
-	public function getPeopleAmountOptions()
+	public static function getPeopleAmountOptions()
 	{
 		return [1, 2, 3, 4];
 	}

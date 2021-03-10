@@ -29,8 +29,6 @@ Username could not be found.: Użytkownik o podanej nazwie nie istnieje.
 Too many failed login attempts, please try again later.: Zbyt dużo nieudanych prób logowania, spróbuj później.
 login.response.confim.user: Odwiedź nas i potwierdź swoją tożsamość przed logowaniem :)
 
-reservation.reservation.saved: Rezerwacja została złożona. Nasz pracownik potwierdzi ją wiadomością lub telefonem. 
-reservation.reservation.error: Wystąpił problem, spróbuj ponownie. Jeśli błąd się powtórzy, skontaktuj się telefonicznie lub mailowo.
 reservation.amount?: Liczba osób:
 reservation.amount: >- 
   {amount, plural, 
@@ -47,6 +45,22 @@ reservation.contact: Telefon lub email:
 reservation.booking: Rezerwuj
 reservation.checkin.date?: Zamelduje się dnia:
 reservation.stay.until?: Zatrzymam się do:
+
+reservation.reservation.saved: Rezerwacja została złożona. Nasz pracownik potwierdzi ją wiadomością lub telefonem. 
+reservation.reservation.error: Wystąpił problem, spróbuj ponownie. Jeśli błąd się powtórzy, skontaktuj się telefonicznie lub mailowo.
+reservation.checkindate.is.invalid: Data zameldowania jest nieprawidłowa.
+reservation.checkoutdate.is.invalid: Data wymeldowania jest nieprawidłowa.
+reservation.roomsAmount.is.invalid: Liczba pokoi jest nieprawidłowa.
+reservation.peopleAmount.is.invalid: Liczba osób jest nieprawidłowa.
+reservation.contact.is.invalid: Dane do kontaktu są nieprawidłowe.
+accomodation.status.choice: Status rezwerwacji jest nieprawidłowy.
+accomodation.checkInAt.not.blank: Podaj datę zameldowania.
+accomodation.checkInOut.not.blank: Podaj datę wymeldowania.
+accomodation.roomsAmount.choice: Podaj prawidłową liczbę pokoi.
+accomodation.peopleAmount.choice: Podaj prawidłową liczbę osób.
+
+
+
 
 admin.nav.assignment: Przydział
 admin.nav.rooms: Pokoje
